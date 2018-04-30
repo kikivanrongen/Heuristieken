@@ -19,7 +19,7 @@ NZ_Holland.railroads("data/ConnectiesHolland.csv")
 # print(NZ_Holland.connections)
 # print(NZ_Holland.connections['Alkmaar'])
 
-B = classes.classes.Train("Gouda")
+B = classes.classes.Train("Castricum")
 print(B.location)
 print(B.past_stations)
 print(B.past_critical_stations)

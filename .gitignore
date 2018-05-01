@@ -1,0 +1,4 @@
+# ignore the cache and DS_Store
+.DS_Store
+.__pycache__/
+.classes/__pychache__

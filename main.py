@@ -1,6 +1,6 @@
 import csv
 import classes.classes
-import loading.load
+import algorithms.firstsol
 
 # import data
 # station_list = loading.load.stations("data/StationsHolland.csv")

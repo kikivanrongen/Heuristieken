@@ -29,7 +29,7 @@ class Stations():
                 self.x.append(float(row[1]))
                 self.y.append(float(row[2]))
 
-                # check for 
+                # check for
                 if row[3] == 'Kritiek':
                     self.critical.append(True)
                     self.critical_stations.append(row[0])

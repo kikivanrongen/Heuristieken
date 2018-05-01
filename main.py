@@ -1,6 +1,6 @@
 import csv
 import classes.classes
-import loading.load
+import algorithms.firstsol
 
 # import data
 # station_list = loading.load.stations("data/StationsHolland.csv")
@@ -45,3 +45,7 @@ print(B.past_stations)
 print(B.past_critical_stations)
 print(B.time_elapsed)
 print(B.number_critical)
+
+
+# random solution
+random_solution = algorithms.firstsol.firstsol(NZ_Holland)

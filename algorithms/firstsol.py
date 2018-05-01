@@ -16,13 +16,13 @@ def firstsol(data):
     for t in range(max_t):
         min = 0
         start = random.choice(data.names)
-        train = classes.classes.Train(start)
+        train = classes.classes.Train(start, data)
 
         # while loop for constrains
         while min < max_min:
 
             # possible connections from last station
-            possible = data.connections[train.location]
+            possible = data.stations.connections[train.location]
 
             # pick random possible connection from possible connections
             next = random.choice(possible)

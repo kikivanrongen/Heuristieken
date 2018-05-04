@@ -18,6 +18,7 @@ def hillclimber(data):
         trains += 1
         start = random.choice(data.names)
         train = classes.classes.Train(start, data)
+        name_last = "None"
 
         while min < min_max:
 
@@ -45,11 +46,11 @@ def hillclimber(data):
                 if count > 4:
                     break
 
-            if next == start or next == name :
+            if next == start or next == name_last :
                 break
 
             # of no break update name for next check
-            name = next
+            name_last = next
 
             # update location of train
             train.update_trajectory(next)

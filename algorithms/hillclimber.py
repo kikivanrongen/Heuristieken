@@ -46,10 +46,11 @@ def hillclimber(data):
                 if count > 4:
                     break
 
+            # break if there is no new/better score and start new train
             if next == start or next == name_last :
                 break
 
-            # of no break update name for next check
+            # if no break update name for next check
             name_last = next
 
             # update location of train

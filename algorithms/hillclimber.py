@@ -45,7 +45,11 @@ def hillclimber(data):
                 if count > 4:
                     break
 
+            if next == start or next == name :
+                break
 
+            # of no break update name for next check
+            name = next
 
             # update location of train
             train.update_trajectory(next)

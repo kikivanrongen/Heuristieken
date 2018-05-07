@@ -3,21 +3,28 @@ import classes.classes
 import random
 from functions.score import score
 
-def firstsol(data):
+def cornerstart(data):
     """ First algorithm for a random solution. """
 
     # initalize variables
     t = 0
     max_t = 7
     max_min = 120
+    dict = data.connections
     random_stations = []
     trains = []
+    one_connection = []
     amount_critical = 0
-
     # for loop for 7 trains
     for t in range(max_t):
         min = 0
-        start = random.choice(data.names)
+
+        # loop through dictionary to find one connection
+        for key in dict:
+            if len(dict[key]) == 1:
+                one_connection.append(key)
+
+        start = random.choice(one_connection)
         # print("START:")
         # print(start)
         train = classes.classes.Train(start, data)
@@ -34,12 +41,10 @@ def firstsol(data):
             train.update_trajectory(next)
             min += train.time_elapsed
 
-
+        amount_critical += train.number_critical
 
         # store train in list
         trains.append(train)
-
-        amount_critical += train.number_critical
 
     # for element in trains:
     #
@@ -49,6 +54,7 @@ def firstsol(data):
     # print(amount_critical)
 
     s = score(amount_critical, t, min)
-    # print("SCORE RANDOM")
+    # print("SCORE UITHOEK")
     # print(s)
+
     return s

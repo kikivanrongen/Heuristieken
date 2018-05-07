@@ -1,6 +1,8 @@
 import csv
 import classes.classes
-import algorithms.firstsol
+from algorithms.firstsol import firstsol
+
+from algorithms.cornerstart import cornerstart
 
 # import data
 # station_list = loading.load.stations("data/StationsHolland.csv")
@@ -16,43 +18,60 @@ NZ_Holland = classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
 NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
-B = classes.classes.Train("Castricum", NZ_Holland)
-print(B.location)
-print(B.past_stations)
-print(B.past_critical_stations)
-print(B.time_elapsed)
+#B = classes.classes.Train("Castricum", NZ_Holland)
+# print(B.location)
+# print(B.past_stations)
+# print(B.past_critical_stations)
+# print(B.time_elapsed)
+#
+# B.update_trajectory(to_location="Hoorn")
+# print(B.location)
+# print(B.past_stations)
+# print(B.past_critical_stations)
+# print(B.time_elapsed)
+# print(B.number_critical)
+#
+# B.update_trajectory(to_location="Zaandam")
+# print(B.location)
+# print(B.past_stations)
+# print(B.past_critical_stations)
+# print(B.time_elapsed)
+# print(B.number_critical)
+#
+# B.update_trajectory(to_location="Beverwijk")
+# print(B.location)
+# print(B.past_stations)
+# print(B.past_critical_stations)
+# print(B.time_elapsed)
+# print(B.number_critical)
+#
+# B.update_trajectory(to_location="Haarlem")
+# print(B.location)
+# print(B.past_stations)
+# print(B.past_critical_stations)
+# print(B.time_elapsed)
+# print(B.number_critical)
+#
+# B.update_trajectory(to_location="Heemstede-Aerdenhout")
+# print(B.location)
+# print(B.past_stations)
+# print(B.past_critical_stations)
+# print(B.time_elapsed)
+# print(B.number_critical)
 
-B.update_trajectory(to_location="Hoorn")
-print(B.location)
-print(B.past_stations)
-print(B.past_critical_stations)
-print(B.time_elapsed)
-print(B.number_critical)
 
-B.update_trajectory(to_location="Zaandam")
-print(B.location)
-print(B.past_stations)
-print(B.past_critical_stations)
-print(B.time_elapsed)
-print(B.number_critical)
 
-B.update_trajectory(to_location="Beverwijk")
-print(B.location)
-print(B.past_stations)
-print(B.past_critical_stations)
-print(B.time_elapsed)
-print(B.number_critical)
+random = []
+corner = []
+for i in range(1000000):
+    random.append(firstsol(NZ_Holland))
+    corner.append(cornerstart(NZ_Holland))
 
-B.update_trajectory(to_location="Haarlem")
-print(B.location)
-print(B.past_stations)
-print(B.past_critical_stations)
-print(B.time_elapsed)
-print(B.number_critical)
+mean_random = sum(random)/len(random)
+mean_corner = sum(corner)/len(corner)
 
-B.update_trajectory(to_location="Heemstede-Aerdenhout")
-print(B.location)
-print(B.past_stations)
-print(B.past_critical_stations)
-print(B.time_elapsed)
-print(B.number_critical)
+
+print("FIRSTSOL:")
+print(mean_random)
+print("UITHOEKSOL:")
+print(mean_corner)

@@ -12,15 +12,16 @@ class Stations():
         self.critical_stations = []
 
         self.connections = {}
+        self.connection_time = {}
         self.critical_connections = []
 
     def stations(self, stations_csv):
-        """returns list of all stations with corresponding coordinates"""
+        """creates object of stations with characteristics"""
 
         # open csv file with stations
         with open (stations_csv) as file_stations:
 
-            # read csv file and return list of columns
+            # read csv file of stations and return list of columns
             read_stations = csv.reader(file_stations)
 
             # iterate over rows and append to class
@@ -29,7 +30,7 @@ class Stations():
                 self.x.append(float(row[1]))
                 self.y.append(float(row[2]))
 
-                # check for
+                # create list of critical stations
                 if row[3] == 'Kritiek':
                     self.critical.append(True)
                     self.critical_stations.append(row[0])
@@ -37,52 +38,65 @@ class Stations():
                     self.critical.append(False)
 
     def railroads(self, connections_csv):
-        """returns dictionary with station and all corresponding connections"""
+        """creates object of connections with characteristics"""
 
+        # open csv file of conections
         with open (connections_csv) as file_connections:
 
+            # read csv file of connections and return list of columns
             read_connections = csv.reader(file_connections)
 
+            # iterate over rows and append to class
             for row in read_connections:
-                self.connections[row[0]] = self.connections.get(row[0], []) + [row[1], float(row[2])]
-                self.connections[row[1]] = self.connections.get(row[1], []) + [row[0], float(row[2])]
 
+                # create dictionary with station as key and possible connections (array) as value
+                self.connections[row[0]] = self.connections.get(row[0], []) + [row[1]]
+                self.connections[row[1]] = self.connections.get(row[1], []) + [row[0]]
+
+                # create dictionary with station as key and connection times (array) as value
+                self.connection_time[row[0]] = self.connection_time.get(row[0], []) + [float(row[2])]
+                self.connection_time[row[1]] = self.connection_time.get(row[1], []) + [float(row[2])]
+
+                # create list of critical connections
                 if row[0] in self.critical_stations or row[1] in self.critical_stations:
                     self.critical_connections.append((row[0], row[1]))
 
-class Train(Stations):
+class Train():
 
-    def __init__(self, location):
-
-        super().__init__()
-        super().stations("data/StationsHolland.csv")
-        super().railroads("data/ConnectiesHolland.csv")
+    def __init__(self, location, stations):
 
         self.location = location
+        self.stations = stations
         self.past_stations = []
         self.past_critical_stations = []
         self.time_elapsed = 0
         self.number_critical = 0
-
 
     def update_trajectory(self, to_location):
         """update trajectory that the train has covered"""
 
         self.to_location = to_location
 
-        possibilities = self.connections[self.location]
+        # find possible connections with current location and corresponding time
+        possibilities = self.stations.connections[self.location]
+        possibilities_time = self.stations.connection_time[self.location]
 
-        for s,t in zip(possibilities[0::2], possibilities[1::2]):
+        # iterate over possible connections
+        for index, place in enumerate(possibilities):
 
-            if self.to_location == s:
+            # check if given trajectory is valid
+            if self.to_location == place:
 
-                self.time_elapsed += t
-                self.past_stations.append(self.to_location)
+                # update train properties
+                self.time_elapsed += possibilities_time[index]
+                self.past_stations.append(place)
 
-                for element in self.critical_stations:
+                # check if trajectory is critical, and if so, update train properties
+                for element in self.stations.critical_stations:
 
-                    if element == self.location:
+                    if element == place:
                         self.number_critical += 1
-                        self.past_critical_stations.append(self.to_location)
+                        self.past_critical_stations.append(place)
 
-            self.location = self.to_location
+                # update current location
+                self.location = self.to_location

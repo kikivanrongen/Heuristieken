@@ -102,3 +102,30 @@ class Train():
 
                 # update current location
                 self.location = self.to_location
+
+        def possible_trajectory(self, to_location):
+            """possible trajectory that the train has covered"""
+
+            self.to_location = to_location
+
+            # find possible connections with current location and corresponding time
+            possibilities = self.stations.connections[self.location]
+            possibilities_time = self.stations.connection_time[self.location]
+
+            # iterate over possible connections
+            for index, place in enumerate(possibilities):
+
+                # check if given trajectory is valid
+                if self.to_location == place:
+
+                    # update train properties
+                    self.time_elapsed += possibilities_time[index]
+
+                    # check if trajectory is critical, and if so, update train properties
+                    for element in self.stations.critical_stations:
+
+                        if element == place:
+                            self.number_critical += 1
+
+                    # update current location
+                    self.location = self.to_location

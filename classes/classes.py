@@ -40,7 +40,7 @@ class Stations():
     def railroads(self, connections_csv):
         """creates object of connections with characteristics"""
 
-        # open csv file of conections
+        # open csv file of connections
         with open (connections_csv) as file_connections:
 
             # read csv file of connections and return list of columns
@@ -69,6 +69,7 @@ class Train():
         self.stations = stations
         self.past_stations = []
         self.past_critical_stations = []
+        self.past_critical_connections = []
         self.time_elapsed = 0
         self.number_critical = 0
 
@@ -99,6 +100,7 @@ class Train():
                     if element == place:
                         self.number_critical += 1
                         self.past_critical_stations.append(place)
+                        self.past_critical_connections.append((self.location, place))
 
                 # update current location
                 self.location = self.to_location
@@ -135,29 +137,38 @@ class Trains():
     def __init__(self, stations):
         self.trains = []
         self.stations = stations
+        self.train_count = 0
 
     def add_train(self, train):
         """ add train to total list of trains """
 
         self.train = train
         self.trains.append(self.train)
+        self.train_count += 1
 
-    def score():
+    def score(self):
         """ calculates score of a particular solution """
 
-        all_past_critical_stations = []
+        all_past_critical_connections = []
         minutes = 0
         total_critical = len(self.stations.critical_connections)
 
         # create list of all past critical stations
-        for element in trains:
-            all_past_critical_stations.append(element.past_critical_stations)
+        for element in self.trains:
+            all_past_critical_connections.append(element.past_critical_connections)
             minutes += element.time_elapsed
 
+        # create clean list
+        cleared_cs_list = []
+
+        for train in all_past_critical_connections:
+            for route in train:
+                cleared_cs_list.append(route)
+
         # remove duplicates from list and calculate proportion of driven critical connections
-        p = len(list(set(all_past_critical_stations))) / total_critical
+        p = len(list(set(cleared_cs_list))) / total_critical
 
         # calculate score
-        S = p * 10000 - (len(trains) * 20 + minutes / 10)
+        S = p * 10000 - (self.train_count * 20 + minutes / 10)
 
         return S

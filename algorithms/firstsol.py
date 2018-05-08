@@ -12,7 +12,7 @@ def firstsol(data):
     max_min = 120
     random_stations = []
     amount_critical = 0
-    trains = Trains(data)
+    trains = classes.classes.Trains(data)
 
     # for loop for 7 trains
     for t in range(max_t):
@@ -32,18 +32,9 @@ def firstsol(data):
             next = random.choice(possible)
 
             train.update_trajectory(next)
+            min = train.time_elapsed
 
         # store train in class
         trains.add_train(train)
 
-    # for element in trains:
-    #
-    #     print(element.past_stations)
-    #     print(element.time_elapsed)
-    #
-    # print(amount_critical)
-
-
-    # print("SCORE RANDOM")
-    # print(s)
     return trains

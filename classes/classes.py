@@ -72,12 +72,7 @@ class Train():
         self.time_elapsed = 0
         self.number_critical = 0
 
-        ## SCORE
-
-
         self.past_stations.append(location)
-
-
 
     def update_trajectory(self, to_location):
         """update trajectory that the train has covered"""
@@ -134,4 +129,3 @@ class Train():
 
                     # update current location
                     self.location = self.to_location
-                

@@ -36,7 +36,7 @@ def cornerstart(data):
             possible = data.connections[train.location]
 
             # make sure train does not go to previous station
-            if previous in possible:    
+            if previous in possible:
                 possible.remove(previous)
 
             # pick random possible connection from possible connections

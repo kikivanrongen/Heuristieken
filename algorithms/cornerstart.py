@@ -12,9 +12,10 @@ def cornerstart(data):
     max_min = 120
     dict = data.connections
     random_stations = []
-    trains = []
     one_connection = []
     amount_critical = 0
+    trains = Trains(data)
+
     # for loop for 7 trains
     for t in range(max_t):
         min = 0
@@ -39,12 +40,9 @@ def cornerstart(data):
             next = random.choice(possible)
 
             train.update_trajectory(next)
-            min += train.time_elapsed
 
-        amount_critical += train.number_critical
-
-        # store train in list
-        trains.append(train)
+        # store train in class
+        trains.add_train(train)
 
     # for element in trains:
     #
@@ -53,8 +51,8 @@ def cornerstart(data):
     #
     # print(amount_critical)
 
-    s = score(amount_critical, t, min)
+
     # print("SCORE UITHOEK")
     # print(s)
 
-    return s
+    return trains

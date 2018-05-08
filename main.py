@@ -63,9 +63,9 @@ NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
 random = []
 corner = []
-for i in range(1000000):
-    random.append(firstsol(NZ_Holland))
-    corner.append(cornerstart(NZ_Holland))
+for i in range(10):
+    random.append(firstsol(NZ_Holland).score())
+    corner.append(cornerstart(NZ_Holland).score())
 
 mean_random = sum(random)/len(random)
 mean_corner = sum(corner)/len(corner)
@@ -75,3 +75,6 @@ print("FIRSTSOL:")
 print(mean_random)
 print("UITHOEKSOL:")
 print(mean_corner)
+
+print("KRITIKE CONNECTION")
+print(len(NZ_Holland.critical_connections))

@@ -26,9 +26,8 @@ def cornerstart(data):
                 one_connection.append(key)
 
         start = random.choice(one_connection)
-        # print("START:")
-        # print(start)
         train = classes.classes.Train(start, data)
+        previous = start
 
         # while loop for constrains
         while min < max_min:
@@ -36,23 +35,19 @@ def cornerstart(data):
             # possible connections from last station
             possible = data.connections[train.location]
 
+            # make sure train does not go to previous station
+            if previous in possible:    
+                possible.remove(previous)
+
             # pick random possible connection from possible connections
             next = random.choice(possible)
 
             train.update_trajectory(next)
+            min = train.time_elapsed
+
+            previous = train.location
 
         # store train in class
         trains.add_train(train)
-
-    # for element in trains:
-    #
-    #     print(element.past_stations)
-    #     print(element.time_elapsed)
-    #
-    # print(amount_critical)
-
-
-    # print("SCORE UITHOEK")
-    # print(s)
 
     return trains

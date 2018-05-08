@@ -75,6 +75,3 @@ print("FIRSTSOL:")
 print(mean_random)
 print("UITHOEKSOL:")
 print(mean_corner)
-
-print("KRITIKE CONNECTION")
-print(len(NZ_Holland.critical_connections))

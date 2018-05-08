@@ -14,7 +14,7 @@ def cornerstart(data):
     random_stations = []
     one_connection = []
     amount_critical = 0
-    trains = Trains(data)
+    trains = classes.classes.Trains(data)
 
     # for loop for 7 trains
     for t in range(max_t):

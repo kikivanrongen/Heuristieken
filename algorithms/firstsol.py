@@ -12,7 +12,7 @@ def firstsol(data):
     max_min = 120
     random_stations = []
     amount_critical = 0
-    trains = Trains(data)
+    trains = classes.classes.Trains(data)
 
     # for loop for 7 trains
     for t in range(max_t):

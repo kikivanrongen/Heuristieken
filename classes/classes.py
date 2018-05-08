@@ -129,3 +129,35 @@ class Train():
 
                     # update current location
                     self.location = self.to_location
+
+class Trains():
+
+    def __init__(self, stations):
+        self.trains = []
+        self.stations = stations
+
+    def add_train(self, train):
+        """ add train to total list of trains """
+
+        self.train = train
+        self.trains.append(self.train)
+
+    def score():
+        """ calculates score of a particular solution """
+
+        all_past_critical_stations = []
+        minutes = 0
+        total_critical = len(self.stations.critical_connections)
+
+        # create list of all past critical stations
+        for element in trains:
+            all_past_critical_stations.append(element.past_critical_stations)
+            minutes += element.time_elapsed
+
+        # remove duplicates from list and calculate proportion of driven critical connections
+        p = len(list(set(all_past_critical_stations))) / total_critical
+
+        # calculate score
+        S = p * 10000 - (len(trains) * 20 + minutes / 10)
+
+        return S

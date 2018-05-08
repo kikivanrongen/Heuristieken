@@ -103,29 +103,61 @@ class Train():
                 # update current location
                 self.location = self.to_location
 
-        def possible_trajectory(self, to_location):
-            """possible trajectory that the train has covered"""
+    def possible_trajectory(self, to_location):
+        """possible trajectory that the train has covered"""
 
-            self.to_location = to_location
+        self.to_location = to_location
 
-            # find possible connections with current location and corresponding time
-            possibilities = self.stations.connections[self.location]
-            possibilities_time = self.stations.connection_time[self.location]
+        # find possible connections with current location and corresponding time
+        possibilities = self.stations.connections[self.location]
+        possibilities_time = self.stations.connection_time[self.location]
 
-            # iterate over possible connections
-            for index, place in enumerate(possibilities):
+        # iterate over possible connections
+        for index, place in enumerate(possibilities):
 
-                # check if given trajectory is valid
-                if self.to_location == place:
+            # check if given trajectory is valid
+            if self.to_location == place:
 
-                    # update train properties
-                    self.time_elapsed += possibilities_time[index]
+                # update train properties
+                self.time_elapsed += possibilities_time[index]
 
-                    # check if trajectory is critical, and if so, update train properties
-                    for element in self.stations.critical_stations:
+                # check if trajectory is critical, and if so, update train properties
+                for element in self.stations.critical_stations:
 
-                        if element == place:
-                            self.number_critical += 1
+                    if element == place:
+                        self.number_critical += 1
 
-                    # update current location
-                    self.location = self.to_location
+                # update current location
+                self.location = self.to_location
+
+class Trains():
+
+    def __init__(self, stations):
+        self.trains = []
+        self.stations = stations
+
+    def add_train(self, train):
+        """ add train to total list of trains """
+
+        self.train = train
+        self.trains.append(self.train)
+
+    def score():
+        """ calculates score of a particular solution """
+
+        all_past_critical_stations = []
+        minutes = 0
+        total_critical = len(self.stations.critical_connections)
+
+        # create list of all past critical stations
+        for element in trains:
+            all_past_critical_stations.append(element.past_critical_stations)
+            minutes += element.time_elapsed
+
+        # remove duplicates from list and calculate proportion of driven critical connections
+        p = len(list(set(all_past_critical_stations))) / total_critical
+
+        # calculate score
+        S = p * 10000 - (len(trains) * 20 + minutes / 10)
+
+        return S

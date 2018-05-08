@@ -1,6 +1,10 @@
 # import score function
 # from functions import score
 
+# begin met een oplossing en pas telkens een stapje (traject) aan
+
+# dit is greedy!! Niet Hill Climber
+
 import csv
 import classes.classes
 import random

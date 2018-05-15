@@ -4,16 +4,7 @@ from algorithms.firstsol import firstsol
 from algorithms.firstsol_noreturn import firstsol_noreturn
 from algorithms.cornerstart import cornerstart
 from algorithms.cornerstart_noreturn import cornerstart_noreturn
-
-# import data
-# station_list = loading.load.stations("data/StationsHolland.csv")
-# connection_list = loading.load.railroads("data/ConnectiesHolland.csv")
-
-# put data in classes
-# for element in station_list:
-#     element[0] = classes.classes.Station(name=element[0], x=element[1],
-#     y=element[2], critical = element[3])
-    # classes.classes.Station(element)
+from algorithms.hillclimber import hillclimber
 
 NZ_Holland = classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
@@ -22,6 +13,8 @@ NZ_Holland.railroads("data/ConnectiesHolland.csv")
 # calculate score for random and cornetstart
 random = []
 corner = []
+random_noreturn = []
+corner_noreturn = []
 for i in range(10):
     random.append(firstsol(NZ_Holland).score())
     corner.append(cornerstart(NZ_Holland).score())
@@ -42,3 +35,10 @@ print("FIRSTSOL NO RETURN:")
 print(mean_random_noreturn)
 print("UITHOEKSOL NO RETURN:")
 print(mean_corner_noreturn)
+
+# hill climber algorithm
+hillclimber1 = hillclimber(NZ_Holland)
+
+print("HILLCLIMBER:")
+
+print(hillclimber1.score())

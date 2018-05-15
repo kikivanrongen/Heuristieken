@@ -13,13 +13,21 @@ def dijkstra(data):
 
     # while loop for constrains
     while min < max_min:
-    
+
         # possible connections from last station
         possible = data.connections[train.location]
 
         # make sure train does not go to previous station
         if previous in possible:
             possible.remove(previous)
+
+        # make list of time to get the shortest
+        time = []
+        for i in possible:
+            time.append(i + 1)
+
+        sort(time)
+        shortest_time = time[0]
 
         # make dict of time and connection
         my_dict = {item : possible[index+1] for index, item in enumerate(a) if index % 2 == 0}

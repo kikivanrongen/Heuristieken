@@ -1,4 +1,5 @@
 import csv
+import random
 import classes.classes
 from algorithms.firstsol import firstsol
 from algorithms.firstsol_noreturn import firstsol_noreturn

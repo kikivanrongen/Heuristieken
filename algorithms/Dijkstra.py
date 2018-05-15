@@ -13,7 +13,7 @@ def dijkstra(data):
 
     # while loop for constrains
     while min < max_min:
-    
+
         # possible connections from last station
         possible = data.connections[train.location]
 

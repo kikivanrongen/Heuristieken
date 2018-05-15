@@ -21,6 +21,14 @@ def dijkstra(data):
         if previous in possible:
             possible.remove(previous)
 
+        # make list of time to get the shortest
+        time = []
+        for i in possible:
+            time.append(i + 1)
+
+        sort(time)
+        shortest_time = time[0]
+
         # make dict of time and connection
         my_dict = {item : possible[index+1] for index, item in enumerate(a) if index % 2 == 0}
         my_dict = {}

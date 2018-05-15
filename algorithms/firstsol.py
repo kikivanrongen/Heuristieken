@@ -19,4 +19,14 @@ def firstsol(data):
         # store train in class
         trains.add_train(train)
 
+    # for element in trains:
+    #
+    #     print(element.past_stations)
+    #     print(element.time_elapsed)
+    #
+    # print(amount_critical)
+
+
+    # print("SCORE RANDOM")
+    # print(s)
     return trains

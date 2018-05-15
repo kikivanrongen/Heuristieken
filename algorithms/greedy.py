@@ -1,63 +1,58 @@
-# from functions import score
-
-# begin met een oplossing en pas telkens een stapje (traject) aan
-
-# dit is greedy!! Niet Hill Climber
-
-import csv
 import classes.classes
 import random
 
 def greedy(data):
     """ Greedy iterative algorithm """
 
-    max_trains = 7
-    min_max = 120
-    trains = 0
+    # create Trains object and copy
+    trains = classes.classes.Trains(data)
+    copy_trains = classes.classes.Trains(data)
 
-    while trains < max_trains:
-        min = 0
-        begin_score = 0
-        trains += 1
+    # maximum minutes for trains
+    min = 0
+    max_min = 120
+    max_t = 7
+
+    for t in range(max_t):
+
+        # determine start position (geen uithoek!)
         start = random.choice(data.names)
+
+        # create Train object and copy
         train = classes.classes.Train(start, data)
-        name_last = "None"
+        copy_train = classes.classes.Train(start, data)
 
-        while min < min_max:
+        while min < max_min:
 
-            count = 0
-            score = score(train.number_critical, trains, train.time_elapsed)
-            score_new = score
+            new_scores = {}
 
-            while score_new <= score:
+            # find possible connections
+            possible = data.connections[train.location]
 
-                count += 1
+            # iterate over connections
+            for element in possible:
 
-                # possible connections from last station
-                possible = data.connections[train.location]
+                # calculate score for new trajectory
+                copy_train.update_trajectory(element)
+                copy_trains.add_train(train)
+                new_scores[element] = copy_trains.score()
 
-                # pick random possible connection from possible connections
-                next = random.choice(possible)
+                # reset train
+                copy_train = train
 
-                # go to new location
-                train.possible_trajectory(next)
+            # find best score in list
+            best_score = max(new_scores.values())
 
-                # calculate score
-                score_new = score(train.number_critical, trains, train.time_elapsed)
+            # determine corresponding go to location
+            for location, score in new_scores.items():
+                if score == best_score:
+                    best_option = location
 
-                # if trajectory cannot be improved, break out if while loop
-                if count > 4:
-                    break
-
-            # break if there is no new/better score and start new train
-            if next == start or next == name_last :
-                break
-
-            # if no break update name for next check
-            name_last = next
-
-            # update location of train
-            train.update_trajectory(next)
-
-            # update elapsed time
+            # update train
+            train.update_trajectory(best_option)
             min += train.time_elapsed
+
+        # add train to trains object
+        trains.add_train(best_option)
+
+    return trains

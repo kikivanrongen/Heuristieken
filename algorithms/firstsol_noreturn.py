@@ -8,11 +8,12 @@ def firstsol_noreturn(data):
     # initalize variables
     max_t = 7
     trains = classes.classes.Trains(data)
-    start = random.choice(data.names)
 
     # for loop for 7 trains
     for t in range(max_t):
 
+        start = random.choice(data.names)
+        
         # find random trajectory with no returns allowed
         train = random_trajectory_noreturns(start, data)
 

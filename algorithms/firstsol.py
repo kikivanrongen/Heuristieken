@@ -8,11 +8,12 @@ def firstsol(data):
     # initalize variables
     max_t = 7
     trains = classes.classes.Trains(data)
-    start = random.choice(data.names)
 
     # for loop for 7 trains
     for t in range(max_t):
 
+        start = random.choice(data.names)
+        
         # find random trajectory
         train = random_trajectory(start, data)
 

@@ -6,6 +6,7 @@ from algorithms.firstsol_noreturn import firstsol_noreturn
 from algorithms.cornerstart import cornerstart
 from algorithms.cornerstart_noreturn import cornerstart_noreturn
 from algorithms.hillclimber import hillclimber
+from algorithms.greedy import greedy
 
 NZ_Holland = classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
@@ -38,8 +39,12 @@ print("UITHOEKSOL NO RETURN:")
 print(mean_corner_noreturn)
 
 # hill climber algorithm
-hillclimber1 = hillclimber(NZ_Holland)
+hillclimber = hillclimber(NZ_Holland)
 
 print("HILLCLIMBER:")
+print(hillclimber.score())
 
-print(hillclimber1.score())
+greedy = greedy(NZ_Holland)
+
+print("GREEDY:")
+print(greedy.score())

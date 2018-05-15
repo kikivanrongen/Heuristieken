@@ -1,9 +1,9 @@
 import classes.classes
 import random
-from functions.random_trajectory import random_trajectory
+from functions.random_trajectory_noreturns import random_trajectory_noreturns
 
-def cornerstart(data):
-    """ First algorithm for a random solution. """
+def cornerstart_noreturn(data):
+    """ First algorithm for a random solution. No returns possible. """
 
     # initalize variables
     max_t = 7
@@ -19,11 +19,10 @@ def cornerstart(data):
             if len(connections[key]) == 1:
                 one_connection.append(key)
 
-        # determine start position
         start = random.choice(one_connection)
+        train = classes.classes.Train(start, data)
 
-        # find random trajectory
-        train = random_trajectory(start, data)
+        train = random_trajectory_noreturns(start, data)
 
         # store train in class
         trains.add_train(train)

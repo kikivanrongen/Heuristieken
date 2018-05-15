@@ -168,6 +168,9 @@ class Trains():
         # remove duplicates from list and calculate proportion of driven critical connections
         p = len(list(set(cleared_cs_list))) / total_critical
 
+        # HOE VERWIJDER JE OOK DUPLICATES DIE DE ANDERE KANT OP GAAN? -->
+        # DEN HAAG -> LEIDEN & LEIDEN -> DEN HAAG
+
         # calculate score
         S = p * 10000 - (self.train_count * 20 + minutes / 10)
 

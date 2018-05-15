@@ -1,9 +1,9 @@
 import classes.classes
-from functions.random_trajectory import random_trajectory
+from functions.random_trajectory_noreturns import random_trajectory_noreturns
 import random
 
-def firstsol(data):
-    """ First algorithm for a random solution. """
+def firstsol_noreturn(data):
+    """ First algorithm for a random solution. No returns possible. """
 
     # initalize variables
     max_t = 7
@@ -13,8 +13,8 @@ def firstsol(data):
     # for loop for 7 trains
     for t in range(max_t):
 
-        # find random trajectory
-        train = random_trajectory(start, data)
+        # find random trajectory with no returns allowed
+        train = random_trajectory_noreturns(start, data)
 
         # store train in class
         trains.add_train(train)

@@ -4,6 +4,7 @@ from functions.random_trajectory_noreturns import random_trajectory_noreturns
 import random
 
 def dijkstra(data):
+    """ Dijkstra algorithm """
 
     min = 0
     max_min = 120
@@ -16,18 +17,10 @@ def dijkstra(data):
         # possible connections from last station
         possible = data.connection_and_time[train.location]
 
-        # touple van de lijst possible maken in de classe
+        # sort the tuple list
         time = sorted(possible, key=lambda times: times[1])
-        print(time)
-
-        # # make dict of time and connection
-        # my_dict = {item : possible[index+1] for index, item in enumerate(a) if index % 2 == 0}
-        # my_dict = {}
-        # for index, item in enumerate(a):
-        #     if index % 2 == 0:
-        #         my_dict[item] = a[index+1]
-
-        print(my_dict)
+        shortest_time = time[0]
+        print(shortest_time)
         # pick shortest connection from possible connections
         next =
 

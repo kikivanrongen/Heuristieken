@@ -26,7 +26,7 @@ for i in range(100):
     corner.append(cornerstart(NZ_Holland).score())
     random_noreturn.append(firstsol_noreturn(NZ_Holland).score())
     corner_noreturn.append(cornerstart_noreturn(NZ_Holland).score())
-    hill_climber.append(hillclimber(NZ_Holland).score())
+    hill_climber.append(hillclimber(NZ_Holland, firstsol, random_trajectory_noreturns).score())
     greedy_alg.append(greedy(NZ_Holland).score())
 
 mean_random = sum(random)/len(random)

@@ -138,6 +138,8 @@ class Trains():
             for route in train:
                 cleared_cs_list.append(route)
 
+        # create set of critical connections as (a,b), (b,a)
+
         # remove duplicates from list and calculate proportion of driven critical connections
         p = len(list(set(cleared_cs_list))) / total_critical
 

@@ -1,6 +1,7 @@
 import csv
 import random
 import classes.classes
+# import algorithms as alg
 from algorithms.firstsol import firstsol
 from algorithms.firstsol_noreturn import firstsol_noreturn
 from algorithms.cornerstart import cornerstart

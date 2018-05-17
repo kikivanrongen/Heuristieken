@@ -53,6 +53,6 @@ def greedy(data):
             min += train.time_elapsed
 
         # add train to trains object
-        trains.add_train(best_option)
+        trains.add_train(train)
 
     return trains

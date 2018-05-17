@@ -1,4 +1,4 @@
 # ignore the cache and DS_Store
 .DS_Store
 __pycache__/
-.test.py
+test.py

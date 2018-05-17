@@ -13,6 +13,7 @@ class Stations():
 
         self.connections = {}
         self.connection_time = {}
+        self.connection_and_time= {}
         self.critical_connections = []
 
     def stations(self, stations_csv):
@@ -56,6 +57,10 @@ class Stations():
                 # create dictionary with station as key and connection times (array) as value
                 self.connection_time[row[0]] = self.connection_time.get(row[0], []) + [float(row[2])]
                 self.connection_time[row[1]] = self.connection_time.get(row[1], []) + [float(row[2])]
+
+                # create dict with tuples of connection and the time
+                self.connection_and_time[row[0]] = self.connection_and_time.get(row[0], []) + [(row[1], float(row[2]))]
+                self.connection_and_time[row[1]] = self.connection_and_time.get(row[1], []) + [(row[0], float(row[2]))]
 
                 # create list of critical connections
                 if row[0] in self.critical_stations or row[1] in self.critical_stations:

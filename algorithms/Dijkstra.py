@@ -7,34 +7,25 @@ def dijkstra(data):
 
     min = 0
     max_min = 120
-    train = classes.classes.Train(start, data)
     start = random.choice(data.names)
-    previous =
+    train = classes.classes.Train(start, data)
 
     # while loop for constrains
     while min < max_min:
 
         # possible connections from last station
-        possible = data.connections[train.location]
+        possible = data.connection_and_time[train.location]
 
-        # make sure train does not go to previous station
-        if previous in possible:
-            possible.remove(previous)
+        # touple van de lijst possible maken in de classe
+        time = sorted(possible, key=lambda times: times[1])
+        print(time)
 
-        # make list of time to get the shortest
-        time = []
-        for i in possible:
-            time.append(i + 1)
-
-        sort(time)
-        shortest_time = time[0]
-
-        # make dict of time and connection
-        my_dict = {item : possible[index+1] for index, item in enumerate(a) if index % 2 == 0}
-        my_dict = {}
-        for index, item in enumerate(a):
-            if index % 2 == 0:
-                my_dict[item] = a[index+1]
+        # # make dict of time and connection
+        # my_dict = {item : possible[index+1] for index, item in enumerate(a) if index % 2 == 0}
+        # my_dict = {}
+        # for index, item in enumerate(a):
+        #     if index % 2 == 0:
+        #         my_dict[item] = a[index+1]
 
         print(my_dict)
         # pick shortest connection from possible connections

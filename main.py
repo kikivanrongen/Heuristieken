@@ -18,16 +18,26 @@ random = []
 corner = []
 random_noreturn = []
 corner_noreturn = []
-for i in range(10):
+hill_climber = []
+greedy_alg = []
+
+for i in range(100):
     random.append(firstsol(NZ_Holland).score())
     corner.append(cornerstart(NZ_Holland).score())
     random_noreturn.append(firstsol_noreturn(NZ_Holland).score())
     corner_noreturn.append(cornerstart_noreturn(NZ_Holland).score())
+    hill_climber.append(hillclimber(NZ_Holland).score())
+    greedy_alg.append(greedy(NZ_Holland).score())
 
 mean_random = sum(random)/len(random)
 mean_corner = sum(corner)/len(corner)
 mean_random_noreturn = sum(random_noreturn)/len(random_noreturn)
 mean_corner_noreturn = sum(corner_noreturn)/len(corner_noreturn)
+mean_hillclimber = sum(hill_climber)/len(hill_climber)
+mean_greedy = sum(greedy_alg)/len(greedy_alg)
+
+lijst = [mean_random, mean_random_noreturn, mean_corner, mean_corner_noreturn]
+print(lijst)
 
 
 print("FIRSTSOL:")
@@ -38,14 +48,7 @@ print("FIRSTSOL NO RETURN:")
 print(mean_random_noreturn)
 print("UITHOEKSOL NO RETURN:")
 print(mean_corner_noreturn)
-
-# hill climber algorithm
-hillclimber = hillclimber(NZ_Holland)
-
-print("HILLCLIMBER:")
-print(hillclimber.score())
-
-greedy = greedy(NZ_Holland)
-
-print("GREEDY:")
-print(greedy.score())
+print("HILLCLIMBER")
+print(mean_hillclimber)
+print("GREEDY")
+print(mean_greedy)

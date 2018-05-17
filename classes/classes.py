@@ -137,16 +137,19 @@ class Trains():
             minutes += element.time_elapsed
 
         # create clean list
-        cleared_cs_list = []
+        one_list = []
 
         for train in all_past_critical_connections:
             for route in train:
-                cleared_cs_list.append(route)
+                one_list.append(route)
+
+        cleared_set = set(one_list)
 
         # create set of critical connections as (a,b), (b,a)
+        complete_dict = {tuple(item) for item in map(sorted, cleared_set)}
 
         # remove duplicates from list and calculate proportion of driven critical connections
-        p = len(list(set(cleared_cs_list))) / total_critical
+        p = len(complete_dict) / total_critical
 
         # calculate score
         S = p * 10000 - (self.train_count * 20 + minutes / 10)

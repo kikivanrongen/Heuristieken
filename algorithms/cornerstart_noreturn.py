@@ -2,11 +2,10 @@ import classes.classes
 import random
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 
-def cornerstart_noreturn(data):
+def cornerstart_noreturn(data, max_t):
     """ First algorithm for a random solution. No returns possible. """
 
     # initalize variables
-    max_t = 7
     connections = data.connections
     one_connection = []
     trains = classes.classes.Trains(data)

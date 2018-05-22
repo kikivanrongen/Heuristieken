@@ -10,14 +10,20 @@ from algorithms.hillclimber import hillclimber
 from algorithms.greedy import greedy
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 
+<<<<<<< HEAD
 from visualisation.visual import visual_solution
 from visualisation.visual import visual
 
 # load data NZ_Holland
+=======
+# print("Which area would you like to ride? (Nederland / NZHolland)")
+
+>>>>>>> 304fd508aea70d9ceffcffe23be21b818ff401ef
 NZ_Holland = classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
 NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
+<<<<<<< HEAD
 # load data the Nederlands
 Nederland = classes.classes.Stations()
 Nederland.stations("data/StationsNationaal.csv")
@@ -28,6 +34,9 @@ visual(NZ_Holland, "Visualisatie NZ Holland")
 visual(Nederland, "Visualisatie Nederland")
 
 # calculate score for random and cornetstart
+=======
+# calculate score for random and cornerstart
+>>>>>>> 304fd508aea70d9ceffcffe23be21b818ff401ef
 random = []
 corner = []
 random_noreturn = []
@@ -35,7 +44,11 @@ corner_noreturn = []
 hill_climber = []
 greedy_alg = []
 
+<<<<<<< HEAD
 for i in range(3):
+=======
+for i in range(10000):
+>>>>>>> 304fd508aea70d9ceffcffe23be21b818ff401ef
     random.append(firstsol(NZ_Holland).score())
     corner.append(cornerstart(NZ_Holland).score())
     random_noreturn.append(firstsol_noreturn(NZ_Holland).score())
@@ -49,9 +62,6 @@ mean_random_noreturn = sum(random_noreturn)/len(random_noreturn)
 mean_corner_noreturn = sum(corner_noreturn)/len(corner_noreturn)
 mean_hillclimber = sum(hill_climber)/len(hill_climber)
 mean_greedy = sum(greedy_alg)/len(greedy_alg)
-
-lijst = [mean_random, mean_random_noreturn, mean_corner, mean_corner_noreturn]
-print(lijst)
 
 
 print("FIRSTSOL:")

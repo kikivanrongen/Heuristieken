@@ -145,7 +145,6 @@ class Trains():
 
         cleared_set = set(one_list)
 
-        # create set of critical connections as (a,b), (b,a)
         complete_dict = {tuple(item) for item in map(sorted, cleared_set)}
 
         # remove duplicates from list and calculate proportion of driven critical connections

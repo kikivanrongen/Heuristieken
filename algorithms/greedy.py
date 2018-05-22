@@ -1,7 +1,8 @@
 import classes.classes
 import random
+import copy
 
-def greedy(data):
+def greedy(data, max_t):
     """ Greedy iterative algorithm """
 
     # create Trains object and copy
@@ -11,7 +12,6 @@ def greedy(data):
     # maximum minutes for trains
     min = 0
     max_min = 120
-    max_t = 7
 
     for t in range(max_t):
 
@@ -34,11 +34,12 @@ def greedy(data):
 
                 # calculate score for new trajectory
                 copy_train.update_trajectory(element)
-                copy_trains.add_train(train)
+                copy_trains.add_train(copy_train)
                 new_scores[element] = copy_trains.score()
 
-                # reset train
+                # reset train and trains
                 copy_train = train
+                copy_trains = trains
 
             # find best score in list
             best_score = max(new_scores.values())

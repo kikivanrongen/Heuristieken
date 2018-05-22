@@ -2,16 +2,15 @@ import classes.classes
 import random
 import copy
 
-def greedy(data, max_t):
+def greedy(data, max_t, max_min):
     """ Greedy iterative algorithm """
 
     # create Trains object and copy
     trains = classes.classes.Trains(data)
     copy_trains = classes.classes.Trains(data)
 
-    # maximum minutes for trains
+    # set minutes
     min = 0
-    max_min = 120
 
     for t in range(max_t):
 

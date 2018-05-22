@@ -1,10 +1,9 @@
 import classes.classes
 import random
 
-def random_trajectory_noreturns(start, data):
+def random_trajectory_noreturns(start, data, max_min):
 
     min = 0
-    max_min = 120
     train = classes.classes.Train(start, data)
     previous = start
 

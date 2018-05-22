@@ -2,7 +2,7 @@ import classes.classes
 from functions.random_trajectory import random_trajectory
 import random
 
-def firstsol(data, max_t):
+def firstsol(data, max_t, max_min):
     """ First algorithm for a random solution. """
 
     # initalize variables
@@ -14,7 +14,7 @@ def firstsol(data, max_t):
         start = random.choice(data.names)
 
         # find random trajectory
-        train = random_trajectory(start, data)
+        train = random_trajectory(start, data, max_min)
 
         # store train in class
         trains.add_train(train)

@@ -2,7 +2,7 @@ import classes.classes
 import random
 from functions.random_trajectory import random_trajectory
 
-def cornerstart(data, max_t):
+def cornerstart(data, max_t, max_min):
     """ First algorithm for a random solution. """
 
     # initalize variables
@@ -22,7 +22,7 @@ def cornerstart(data, max_t):
         start = random.choice(one_connection)
 
         # find random trajectory
-        train = random_trajectory(start, data)
+        train = random_trajectory(start, data, max_min)
 
         # store train in class
         trains.add_train(train)

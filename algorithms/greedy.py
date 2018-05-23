@@ -12,7 +12,6 @@ def greedy(data, max_t):
     # maximum minutes for trains
     min = 0
     max_min = 120
-    max_t = 7
 
     for t in range(max_t):
 

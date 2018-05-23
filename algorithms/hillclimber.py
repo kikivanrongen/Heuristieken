@@ -6,11 +6,11 @@ from algorithms.cornerstart import cornerstart
 from functions.random_trajectory import random_trajectory
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 
-def hillclimber(data, startfunction, trajectory):
+def hillclimber(data, startfunction, trajectory, max_t, max_min):
     """ Hill Climber iterative algortihm. Replaces one trajectory and checks score. """
 
     # start with a possible solution
-    solution = startfunction(data)
+    solution = startfunction(data, max_t, max_min)
     start_solution = solution
 
     # calculate score
@@ -25,7 +25,7 @@ def hillclimber(data, startfunction, trajectory):
         for i in range(max_loop):
 
             # change one train in the solution
-            new_train = trajectory(start, data)
+            new_train = trajectory(start, data, max_min)
             start_solution.trains[index] = new_train
             temporary_score = start_solution.score()
 

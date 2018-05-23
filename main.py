@@ -13,7 +13,21 @@ NZ_Holland = classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
 NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
-# calculate score for random and cornetstart
+# load data the Nederlands
+Nederland = classes.classes.Stations()
+Nederland.stations("data/StationsNationaal.csv")
+Nederland.railroads("data/ConnectiesNationaal.csv")
+
+# visualisation of possible trajectory
+visual(NZ_Holland, "Visualisatie NZ Holland")
+visual(Nederland, "Visualisatie Nederland")
+
+max_t_n = 20
+max_t_nz = 7
+max_min_n = 180
+max_min_nz = 120
+
+# calculate score for random and cornerstart
 random = []
 corner = []
 random_noreturn = []
@@ -21,13 +35,13 @@ corner_noreturn = []
 hill_climber = []
 greedy_alg = []
 
-for i in range(100):
-    random.append(firstsol(NZ_Holland).score())
-    corner.append(cornerstart(NZ_Holland).score())
-    random_noreturn.append(firstsol_noreturn(NZ_Holland).score())
-    corner_noreturn.append(cornerstart_noreturn(NZ_Holland).score())
-    hill_climber.append(hillclimber(NZ_Holland, firstsol, random_trajectory_noreturns).score())
-    greedy_alg.append(greedy(NZ_Holland).score())
+for i in range(10000):
+    random.append(firstsol(NZ_Holland, max_t_nz, max_min_nz).score())
+    corner.append(cornerstart(NZ_Holland, max_t_nz, max_min_nz).score())
+    random_noreturn.append(firstsol_noreturn(NZ_Holland, max_t_nz, max_min_nz).score())
+    corner_noreturn.append(cornerstart_noreturn(NZ_Holland, max_t_nz, max_min_nz).score())
+    hill_climber.append(hillclimber(NZ_Holland, firstsol, random_trajectory_noreturns, max_t_nz, max_min_nz).score())
+    greedy_alg.append(greedy(NZ_Holland, max_t_nz, max_min_nz).score())
 
 mean_random = sum(random)/len(random)
 mean_corner = sum(corner)/len(corner)
@@ -52,3 +66,56 @@ print("HILLCLIMBER")
 print(mean_hillclimber)
 print("GREEDY")
 print(mean_greedy)
+print(max(greedy_alg))
+
+visual_solution(NZ_Holland, firstsol_noreturn(NZ_Holland, max_t_nz))
+
+###################################################################
+########## HOLLAND
+
+n_random = []
+n_corner = []
+n_random_noreturn = []
+n_corner_noreturn = []
+n_hill_climber = []
+n_greedy_alg = []
+
+for i in range(3):
+    n_random.append(firstsol(Nederland, max_t_n, max_min_n).score())
+    n_corner.append(cornerstart(Nederland, max_t_n, max_min_n).score())
+    n_random_noreturn.append(firstsol_noreturn(Nederland, max_t_n, max_min_n).score())
+    n_corner_noreturn.append(cornerstart_noreturn(Nederland, max_t_n, max_min_n).score())
+    n_hill_climber.append(hillclimber(Nederland, firstsol, random_trajectory_noreturns, max_t_n, max_min_n).score())
+    n_greedy_alg.append(greedy(Nederland, max_t_n, max_min_n).score())
+
+mean_n_random = sum(n_random)/len(n_random)
+mean_n_corner = sum(n_corner)/len(n_corner)
+mean_n_random_noreturn = sum(n_random_noreturn)/len(n_random_noreturn)
+mean_n_corner_noreturn = sum(n_corner_noreturn)/len(n_corner_noreturn)
+mean_n_hillclimber = sum(n_hill_climber)/len(n_hill_climber)
+mean_n_greedy = sum(n_greedy_alg)/len(n_greedy_alg)
+
+lijst = [mean_n_random, mean_n_random_noreturn, mean_n_corner, mean_n_corner_noreturn]
+print(lijst)
+
+
+print("FIRSTSOL:")
+print(mean_n_random)
+print(max(n_random))
+print("UITHOEKSOL:")
+print(mean_n_corner)
+print(max(n_corner))
+print("FIRSTSOL NO RETURN:")
+print(mean_n_random_noreturn)
+print(max(n_random_noreturn))
+print("UITHOEKSOL NO RETURN:")
+print(mean_n_corner_noreturn)
+print(max(n_corner_noreturn))
+print("HILLCLIMBER")
+print(mean_n_hillclimber)
+print(max(n_hill_climber))
+print("GREEDY")
+print(mean_n_greedy)
+print(max(n_greedy_alg))
+
+visual_solution(Nederland, firstsol_noreturn(Nederland, max_t_n, max_min_n))

@@ -2,7 +2,7 @@ import classes.classes
 import random
 import copy
 
-def greedy(data, max_t, max_min):
+def greedy(data, max_t):
     """ Greedy iterative algorithm """
 
     # create Trains object and copy

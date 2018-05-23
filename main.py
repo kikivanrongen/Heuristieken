@@ -8,12 +8,6 @@ from algorithms.cornerstart import cornerstart
 from algorithms.cornerstart_noreturn import cornerstart_noreturn
 from algorithms.hillclimber import hillclimber
 from algorithms.greedy import greedy
-from functions.random_trajectory_noreturns import random_trajectory_noreturns
-
-from visualisation.visual import visual_solution
-from visualisation.visual import visual
-
-# load data NZ_Holland
 
 NZ_Holland = classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
@@ -56,22 +50,20 @@ mean_corner_noreturn = sum(corner_noreturn)/len(corner_noreturn)
 mean_hillclimber = sum(hill_climber)/len(hill_climber)
 mean_greedy = sum(greedy_alg)/len(greedy_alg)
 
+lijst = [mean_random, mean_random_noreturn, mean_corner, mean_corner_noreturn]
+print(lijst)
+
 
 print("FIRSTSOL:")
 print(mean_random)
-print(max(random))
 print("UITHOEKSOL:")
 print(mean_corner)
-print(max(corner))
 print("FIRSTSOL NO RETURN:")
 print(mean_random_noreturn)
-print(max(random_noreturn))
 print("UITHOEKSOL NO RETURN:")
 print(mean_corner_noreturn)
-print(max(corner_noreturn))
 print("HILLCLIMBER")
 print(mean_hillclimber)
-print(max(hill_climber))
 print("GREEDY")
 print(mean_greedy)
 print(max(greedy_alg))

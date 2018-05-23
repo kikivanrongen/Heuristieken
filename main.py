@@ -41,7 +41,7 @@ corner_noreturn = []
 hill_climber = []
 greedy_alg = []
 
-for i in range(10000):
+for i in range(1000):
     random.append(firstsol(NZ_Holland, max_t_nz, max_min_nz).score())
     corner.append(cornerstart(NZ_Holland, max_t_nz, max_min_nz).score())
     random_noreturn.append(firstsol_noreturn(NZ_Holland, max_t_nz, max_min_nz).score())
@@ -88,7 +88,7 @@ n_corner_noreturn = []
 n_hill_climber = []
 n_greedy_alg = []
 
-for i in range(3):
+for i in range(1000):
     n_random.append(firstsol(Nederland, max_t_n, max_min_n).score())
     n_corner.append(cornerstart(Nederland, max_t_n, max_min_n).score())
     n_random_noreturn.append(firstsol_noreturn(Nederland, max_t_n, max_min_n).score())

@@ -15,6 +15,7 @@ class Stations():
         self.connection_time = {}
         self.connection_and_time= {}
         self.critical_connections = []
+        self.stations_with_critical_connection = []
 
     def stations(self, stations_csv):
         """creates object of stations with characteristics"""
@@ -65,6 +66,19 @@ class Stations():
                 # create list of critical connections
                 if row[0] in self.critical_stations or row[1] in self.critical_stations:
                     self.critical_connections.append((row[0], row[1]))
+
+                # make list of stations with a critical connections
+                for station in self.critical_stations:
+                    for connection in self.critical_connections:
+                        if station == connection[0]:
+                            self.stations_with_critical_connection.append(connection[1])
+                        if station == connection[1]:
+                            self.stations_with_critical_connection.append(connection[0])
+
+                for station in self.critical_stations:
+                    self.stations_with_critical_connection.append(station)
+
+                self.stations_with_critical_connection = list(set(self.stations_with_critical_connection))
 
 class Train():
 

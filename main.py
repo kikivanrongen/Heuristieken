@@ -8,6 +8,8 @@ from algorithms.cornerstart import cornerstart
 from algorithms.cornerstart_noreturn import cornerstart_noreturn
 from algorithms.hillclimber import hillclimber
 from algorithms.greedy import greedy
+from visualisation.visual import visual
+from visualisation.visual import visual_solution
 
 NZ_Holland = classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")

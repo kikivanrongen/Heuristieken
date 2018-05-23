@@ -33,7 +33,6 @@ max_t_nz = 7
 max_min_n = 180
 max_min_nz = 120
 
-# calculate score for random and cornetstart
 # calculate score for random and cornerstart
 random = []
 corner = []

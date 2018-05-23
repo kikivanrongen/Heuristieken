@@ -36,15 +36,10 @@ def hillclimber(data, startfunction, trajectory, max_t, max_min):
             # store new train if score is improved
             if temporary_score > current_score:
                 solution.trains[index] = new_train
-<<<<<<< HEAD
-                new_score = temporary_score
-                old_score = new_score
-=======
                 current_score = temporary_score
 
             # set copy
             copy_solution = copy.deepcopy(solution)
->>>>>>> 7b09889b18dc315663c4d22335e2fa3604694ec7
 
         # update index
         index += 1

@@ -24,7 +24,7 @@ def hillclimber(data, startfunction, trajectory, max_t, max_min):
 
         for i in range(max_loop):
 
-            # change one train in the solution
+            # change multiple trains in the solution depending on the score
             new_train = trajectory(start, data, max_min)
             start_solution.trains[index] = new_train
             temporary_score = start_solution.score()

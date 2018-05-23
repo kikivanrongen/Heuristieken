@@ -7,7 +7,7 @@ from algorithms.cornerstart import cornerstart
 from functions.random_trajectory import random_trajectory
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 
-def hillclimber3(data, startfunction, trajectory, max_t, max_min):
+def hillclimber(data, startfunction, trajectory, max_t, max_min):
     """ Hill Climber iterative algortihm. Replaces one trajectory and checks score. """
 
     # start with a possible solution

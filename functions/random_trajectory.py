@@ -3,11 +3,11 @@ import random
 
 def random_trajectory(start, data, max_min):
 
-    min = 0
+    minutes = 0
     train = classes.classes.Train(start, data)
 
     # while loop for constrains
-    while min < max_min:
+    while minutes < max_min:
 
         # possible connections from last station
         possible = data.connections[train.location]
@@ -16,6 +16,6 @@ def random_trajectory(start, data, max_min):
         next = random.choice(possible)
 
         train.update_trajectory(next)
-        min = train.time_elapsed
+        minutes = train.time_elapsed
 
     return train

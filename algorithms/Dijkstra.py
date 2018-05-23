@@ -3,58 +3,64 @@ import classes.classes
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 import random
 
-def dijkstra(data):
+def dijkstra(data, max_t, max_min):
     """ Dijkstra algorithm """
 
-    min = 0
-    max_min = 120
+    # alle kritieke verbindingen berijden en dan opsplitsen in trajecten door min !!!!!!
+    # create Trains object
+    trains = classes.classes.Trains(data)
 
-    # start and end critical stations but randomly chosen
+    past_crit_stations = []
+    remaining_crit_stations = []
     start = random.choice(data.critical_stations)
     end = random.choice(data.critical_stations)
-    while start == end:
-        end = random.choice(data.critical_stations)
 
-    train = classes.classes.Train(start, data)
-    previous = []
-    previous.append(start)
 
-    print("!!!!!!!!BEGIN!!!!!!!!!!")
 
-    # while loop for constrains
-    while min < max_min:
-        # mag geen previous hebben , check voor eind station anders door naar korte verbinding
-        # possible connections from last station
-        possible = data.connection_and_time[train.location]
+    while data.critical_connections != past_crit_stat:
+        min = 0
 
-        #print(possible)
-        print(previous)
-        print("\n")
-        print(possible)
-        print("\n")
+        # create Train object
+        train = classes.classes.Train(start, data)
 
-        # make sure train does not go to previous station
-        for prev in previous:
-            for pos in possible:
-                    if prev[0] == pos[0]:
-                            possible.remove(prev)
+        # start and end critical stations but randomly chosen
+        start = random.choice(remaining_crit_stations)
+        end = random.choice(remaining_crit_stations)
+        while start == end:
+            end = random.choice(data.critical_stations)
 
-        print(possible)
-        print("--------")
+        train = classes.classes.Train(start, data)
+        previous = []
+        previous.append(start)
 
-        # sort the tuple list and pick station with shortest time
-        time = sorted(possible, key=lambda times: times[1])
-        shortest_time = time[0]
-        next = shortest_time[0]
+        # while loop for constrains
+        while min < max_min:
 
-        # if next station is end station return train
-        if next == end:
-            return train.past_stations
+            # possible connections from last station
+            possible = data.connection_and_time[train.location]
 
-        train.update_trajectory(next)
-        min = train.time_elapsed
+            # make sure train does not go to previous stations
+            for prev in previous:
+                for pos in possible:
+                    if pos[0] == prev:
+                        possible.remove(pos)
 
-        # update previous location
-        previous.append(train.location)
+            # sort the tuple list and pick station with shortest time
+            time = sorted(possible, key=lambda times: times[1])
+            shortest_time = time[0]
+            next = shortest_time[0]
 
-    return train.past_stations
+            # if next station is end station return train
+            if next == end:
+                return train
+
+            train.update_trajectory(next)
+            min = train.time_elapsed
+
+            # update previous location
+            previous.append(train.location)
+
+        # add train to trains object
+        trains.add_train(train)
+
+    return trains

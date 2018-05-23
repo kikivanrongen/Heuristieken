@@ -1,38 +1,50 @@
 import classes.classes
 import random
+import copy
 from algorithms.firstsol import firstsol
 from algorithms.cornerstart_noreturn import cornerstart_noreturn
 from algorithms.cornerstart import cornerstart
 from functions.random_trajectory import random_trajectory
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 
-def hillclimber(data, startfunction, trajectory, max_t, max_min):
+def hillclimber3(data, startfunction, trajectory, max_t, max_min):
     """ Hill Climber iterative algortihm. Replaces one trajectory and checks score. """
 
     # start with a possible solution
     solution = startfunction(data, max_t, max_min)
-    start_solution = solution
+    copy_solution = copy.deepcopy(solution)
 
     # calculate score
-    old_score = start_solution.score()
-    max_loop = 100000
+    current_score = copy_solution.score()
+    max_loop = 1000
     index = 0
 
-    for element in start_solution.trains:
+    # iterate over trains in current solution
+    for element in solution.trains:
 
-        start = element.past_stations[0]
+        # determine new start station
+        start = random.choice(data.names)
 
+        # iterate new trajectories
         for i in range(max_loop):
 
             # change one train in the solution
             new_train = trajectory(start, data, max_min)
-            start_solution.trains[index] = new_train
-            temporary_score = start_solution.score()
+            copy_solution.trains[index] = new_train
+            temporary_score = copy_solution.score()
 
-            if temporary_score > old_score:
+            # store new train if score is improved
+            if temporary_score > current_score:
                 solution.trains[index] = new_train
+<<<<<<< HEAD
                 new_score = temporary_score
                 old_score = new_score
+=======
+                current_score = temporary_score
+
+            # set copy
+            copy_solution = copy.deepcopy(solution)
+>>>>>>> 7b09889b18dc315663c4d22335e2fa3604694ec7
 
         # update index
         index += 1

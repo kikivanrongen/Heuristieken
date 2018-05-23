@@ -3,19 +3,29 @@ import classes.classes
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 import random
 
-def dijkstra(data, max_t):
+def dijkstra(data, max_t, max_min):
     """ Dijkstra algorithm """
 
-    min = 0
-    max_min = 120
+    # alle kritieke verbindingen berijden en dan opsplitsen in trajecten door min !!!!!!
+    # create Trains object
+    trains = classes.classes.Trains(data)
 
-    for t in range(max_t):
+    past_crit_stations = []
+    remaining_crit_stations = []
+    start = random.choice(data.critical_stations)
+    end = random.choice(data.critical_stations)
 
-        trains = classes.classes.Trains(data)
+
+
+    while data.critical_connections != past_crit_stat:
+        min = 0
+
+        # create Train object
+        train = classes.classes.Train(start, data)
 
         # start and end critical stations but randomly chosen
-        start = random.choice(data.critical_stations)
-        end = random.choice(data.critical_stations)
+        start = random.choice(remaining_crit_stations)
+        end = random.choice(remaining_crit_stations)
         while start == end:
             end = random.choice(data.critical_stations)
 
@@ -49,5 +59,8 @@ def dijkstra(data, max_t):
 
             # update previous location
             previous.append(train.location)
+
+        # add train to trains object
+        trains.add_train(train)
 
     return trains

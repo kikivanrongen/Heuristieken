@@ -6,7 +6,9 @@ class Stations():
     the environment of the project.
 
     The init function defines all variables that are set with data in the following
-    functions: stations and railroads.
+    functions: stations and railroads. This contains characteristics of the stations,
+    such as: name, coordinates, critical/non-critical, connections (critical / non-critical)
+    and connections with time. It also stores stations that have a critical connection seperately.
 
     """
 
@@ -103,7 +105,7 @@ class Train():
     """
     Object that stores information of one train at a certain point in the trajectory
     in the given environment. This contains the current location, past stations,
-    past connections (critical/non-critical with count variable) and elapsed time. 
+    past connections (critical/non-critical with count variable) and elapsed time.
 
     """
 
@@ -120,7 +122,12 @@ class Train():
         self.past_stations.append(location)
 
     def update_trajectory(self, to_location):
-        """update trajectory that the train has covered"""
+        """
+        This function checks if a go-to location is valid and if so, updates the
+        trajectory. The elapsed time, past stations (critical/non-critical) and
+        past critical connections are adjusted accordingly.
+
+        """
 
         self.to_location = to_location
 
@@ -138,7 +145,7 @@ class Train():
                 self.time_elapsed += possibilities_time[index]
                 self.past_stations.append(place)
 
-                # check if trajectory is critical, and if so, update train properties
+                # check if trajectory is critical and if so, update train properties
                 for element in self.stations.critical_stations:
 
                     if element == place:
@@ -150,22 +157,44 @@ class Train():
                 self.location = self.to_location
 
 class Trains():
+    """
+    This object keeps track of the entire solution given a particular environment.
+    It stores all the driven trajectories of class Train in a list and counts the
+    number of trains. Also, it contains two functions for adding new trains and
+    calculating the score of a certain solution.
+
+    """
+
 
     def __init__(self, stations):
+
         self.trains = []
         self.stations = stations
         self.train_count = 0
 
     def add_train(self, train):
-        """ add train to total list of trains """
+        """
+        This function adds a new trajectory (train) to the entire solution. This
+        trajectory is of class Train and is stored in the list trains. A count variable
+        is also logged.
+
+        """
 
         self.train = train
         self.trains.append(self.train)
         self.train_count += 1
 
     def score(self):
-        """ calculates score of a particular solution """
+        """
+        This function is implemented to calculate the score of a given solution.
+        The formula is provided in the assignment and it requires the proportion of
+        driven critical connections, the number of trains and the elapsed time of
+        all trains. In order to calculate the proportion the covered critical connections
+        of every train are stored in one list and duplicates are removed.
 
+        """
+
+        # set 
         all_past_critical_connections = []
         minutes = 0
         total_critical = len(self.stations.critical_connections)
@@ -175,18 +204,17 @@ class Trains():
             all_past_critical_connections.append(element.past_critical_connections)
             minutes += element.time_elapsed
 
-        # create clean list
+        # create one list of all past critical connections
         one_list = []
-
         for train in all_past_critical_connections:
             for route in train:
                 one_list.append(route)
 
+        # remove duplicates (both (a,b) and (b,a))
         cleared_set = set(one_list)
-
         complete_dict = {tuple(item) for item in map(sorted, cleared_set)}
 
-        # remove duplicates from list and calculate proportion of driven critical connections
+        # calculate proportion of driven critical connections
         p = len(complete_dict) / total_critical
 
         # calculate score

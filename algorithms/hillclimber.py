@@ -8,14 +8,10 @@ from functions.random_trajectory import random_trajectory
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 
 def hillclimber(data, startfunction, trajectory, max_t, max_min):
-<<<<<<< HEAD
     """ Hill Climber iterative algortihm. Starts with a random solution with no
     returns. Thereafter in changes one trajectory 1000 times and checks whether
     the score is higher or not. It chooses the trajectory with the highest score.
     This is done for every trajectory. """
-=======
-    """ Hill Climber iterative algortihm. Replaces one trajectory and checks score. """
->>>>>>> 66c368e071f8526c61645d0dab41a0dddb30b91b
 
     # start with a possible solution
     solution = startfunction(data, max_t, max_min)
@@ -43,10 +39,6 @@ def hillclimber(data, startfunction, trajectory, max_t, max_min):
             # store new train if score is improved
             if temporary_score > current_score:
                 solution.trains[index] = new_train
-<<<<<<< HEAD
-
-=======
->>>>>>> 66c368e071f8526c61645d0dab41a0dddb30b91b
                 current_score = temporary_score
 
             # set copy

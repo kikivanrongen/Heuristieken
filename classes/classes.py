@@ -194,7 +194,7 @@ class Trains():
 
         """
 
-        # set 
+        # set variables
         all_past_critical_connections = []
         minutes = 0
         total_critical = len(self.stations.critical_connections)

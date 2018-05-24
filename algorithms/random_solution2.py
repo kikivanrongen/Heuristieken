@@ -20,12 +20,12 @@ def random_solution2(data, max_t, max_min, corner = None, returns = None):
             start = random.choice(one_connection)
 
         else:
-            start = random.choice(connections)
+            start = random.choice(data.names)
 
         # make trajectory
-        train = random_trajectory2(start, data, max_min, returns)
+        random_traj = random_trajectory2(start, data, max_min, returns)
 
         # add train to trains
-        trains.add_train(train)
+        trains.add_train(random_traj)
 
     return trains

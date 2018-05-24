@@ -1,36 +1,35 @@
-
 import classes.classes
 import random
+import copy
 
 def random_trajectory2(start, data, max_min, returns):
 
+    # set variables and
     minutes = 0
     train = classes.classes.Train(start, data)
     previous = start
-    print("NEW TRAIN")
+
     # while loop for constrains
     while minutes < max_min:
 
         # possible connections from last station
-        possible = data.connections[train.location]
-
-        print(train.location)
+        possible = copy.deepcopy(data.connections[train.location])
 
         # remove previous from possible
         if returns == False:
             if previous in possible:
-                print("IK BEN HIER")
                 possible.remove(previous)
+
             if not possible:
                 break
 
-        print(possible)
-
         # pick random possible connection from possible connections
         next = random.choice(possible)
-        previous = train.location
-        print(next)
 
+        # update previous location
+        previous = train.location
+
+        # update train trajectory and elapsed time
         train.update_trajectory(next)
         minutes = train.time_elapsed
 

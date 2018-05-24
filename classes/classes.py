@@ -1,6 +1,14 @@
 import csv
 
 class Stations():
+    """
+    Open and read data, and store data in variables accordingly. This object constains
+    the environment of the project.
+
+    The init function defines all variables that are set with data in the following
+    functions: stations and railroads.
+
+    """
 
     def __init__(self):
 
@@ -18,7 +26,11 @@ class Stations():
         self.stations_with_critical_connection = []
 
     def stations(self, stations_csv):
-        """creates object of stations with characteristics"""
+        """
+        This function opens and reads the station file that contains all stations
+        in the environment with corresponding coordinates. It also keeps track of critical stations.
+
+        """
 
         # open csv file with stations
         with open (stations_csv) as file_stations:
@@ -40,7 +52,13 @@ class Stations():
                     self.critical.append(False)
 
     def railroads(self, connections_csv):
-        """creates object of connections with characteristics"""
+        """
+        This function opens and reads the connections file that contains all possible
+        connections in the environment. The connections are stored in a dictionary as location: connection,
+        location: connection time and location: (connection, time). It also stores
+        critical connections in a seperate variable.
+
+        """
 
         # open csv file of connections
         with open (connections_csv) as file_connections:
@@ -81,6 +99,13 @@ class Stations():
                 self.stations_with_critical_connection = list(set(self.stations_with_critical_connection))
 
 class Train():
+
+    """
+    Object that stores information of one train at a certain point in the trajectory
+    in the given environment. This contains the current location, past stations,
+    past connections (critical/non-critical with count variable) and elapsed time. 
+
+    """
 
     def __init__(self, location, stations):
 

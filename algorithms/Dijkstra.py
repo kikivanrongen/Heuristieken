@@ -1,6 +1,7 @@
 import csv
 import classes.classes
 import random
+import copy
 
 def dijkstra(data, max_t, max_min):
     """ Dijkstra algorithm finds the shortest path between the stations. The
@@ -48,7 +49,7 @@ def dijkstra(data, max_t, max_min):
         # while loop for constrains
         while minutes < max_min:
             # possible connections from last station
-            possible = data.connection_and_time[train.location]
+            possible = copy.deepcopy(data.connection_and_time[train.location])
             possible_critical = []
 
             # make sure train does not go to previous stations
@@ -110,6 +111,6 @@ def dijkstra(data, max_t, max_min):
         # update number of Trains
         t += 1
 
-    print(past_critical_connections, t)
+    print(past_critical_connections, len(past_critical_connections))
 
     return trains

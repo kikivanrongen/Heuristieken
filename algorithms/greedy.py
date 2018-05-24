@@ -3,12 +3,16 @@ import random
 import copy
 
 def greedy(data, max_t):
-    """ Greedy iterative algorithm """
+    """ Greedy iterative algorithm. This algorithm starts at a random startpoint
+    and checks the scores of every possible next station. After checking every
+    the score of every possible next station, the algorithm chooses the station
+    with the highest score. """
 
     # create Trains object and copy
     trains = classes.classes.Trains(data)
     copy_trains = classes.classes.Trains(data)
 
+    # for amount of minutes
     for t in range(max_t):
 
         # set minutes

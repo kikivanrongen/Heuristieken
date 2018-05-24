@@ -1,17 +1,17 @@
 import classes.classes
 import random
 import copy
-from algorithms.firstsol import firstsol
 from algorithms.cornerstart_noreturn import cornerstart_noreturn
 from algorithms.cornerstart import cornerstart
 from functions.random_trajectory import random_trajectory
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 
-def hillclimber(data, startfunction, trajectory, max_t, max_min):
+def hillclimber(data, startfunction, trajectory, max_t, max_min, max_loop = 1000):
     """ Hill Climber iterative algortihm. Starts with a random solution with no
-    returns. Thereafter in changes one trajectory 1000 times and checks whether
-    the score is higher or not. It chooses the trajectory with the highest score.
-    This is done for every trajectory. """
+    returns. Thereafter in changes one trajectory a given number of times (in
+    default 1000 timer) and checks whether the score is higher or not. It
+    chooses the trajectory with the highest score. This is done for every
+    trajectory. """
 
     # start with a possible solution
     solution = startfunction(data, max_t, max_min)
@@ -19,7 +19,6 @@ def hillclimber(data, startfunction, trajectory, max_t, max_min):
 
     # calculate score
     current_score = copy_solution.score()
-    max_loop = 1000
     index = 0
 
     # iterate over trains in current solution

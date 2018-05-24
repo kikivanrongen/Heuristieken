@@ -11,6 +11,7 @@ def greedy(data, max_t, max_min):
     # create Trains object and copy
     trains = classes.classes.Trains(data)
     copy_trains = classes.classes.Trains(data)
+    start_stations = copy.deepcopy(data.names)
 
     # create list of start stations
     # start_stations = copy.deepcopy(data.names)

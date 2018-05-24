@@ -11,10 +11,6 @@ def greedy(data, max_t, max_min):
     # create Trains object and copy
     trains = classes.classes.Trains(data)
     copy_trains = classes.classes.Trains(data)
-    start_stations = copy.deepcopy(data.names)
-
-    # create list of start stations
-    # start_stations = copy.deepcopy(data.names)
 
     # for amount of minutes
     for t in range(max_t):
@@ -39,7 +35,7 @@ def greedy(data, max_t, max_min):
             new_scores = {}
 
             # find possible connections
-            possible = data.connections[train.location]
+            possible = copy.deepcopy(data.connections[train.location])
 
             # check for corner station
             if len(possible) != 1:

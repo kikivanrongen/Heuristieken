@@ -110,3 +110,12 @@ print(mean_n_greedy)
 print(max(n_greedy_alg))
 
 visual_sol(Nederland, random_sol_noreturn(Nederland, max_t_n, max_min_n))
+
+
+######## VOORBEELD HISTOGRAM
+
+
+greed = []
+for i in range(100):
+    greed.append(greedy(NZ_Holland, 7, 120).score())
+hist(greed, "Histogram Greedy")

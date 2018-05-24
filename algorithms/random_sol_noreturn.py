@@ -2,7 +2,7 @@ import classes.classes
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 import random
 
-def firstsol_noreturn(data, max_t, max_min):
+def random_sol_noreturn(data, max_t, max_min):
     """ First algorithm for a random solution. No returns possible. """
 
     # initalize variables

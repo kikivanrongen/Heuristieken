@@ -1,6 +1,5 @@
 import classes.classes
 import matplotlib.pyplot as plt
-from algorithms.firstsol import firstsol
 
 
 def visual_sol(data, solution):

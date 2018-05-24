@@ -13,7 +13,7 @@ from algorithms.hillclimber import hillclimber
 from algorithms.greedy import greedy
 from algorithms.dijkstra import dijkstra
 
-from visualisation.visual import visual
+from visualisation.visual import visual_sol
 
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 from functions.random_trajectory2 import random_trajectory2

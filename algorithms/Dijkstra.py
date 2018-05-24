@@ -1,10 +1,16 @@
 import csv
 import classes.classes
-from functions.random_trajectory_noreturns import random_trajectory_noreturns
 import random
 
 def dijkstra(data, max_t, max_min):
-    """ Dijkstra algorithm """
+    """ Dijkstra algorithm finds the shortest path between the stations. The
+    algorithm's start and end is randomly chosen of a list of stations with at
+    least one critical connection. From the possible connections, it choses the
+    critical shortest time. When there are no critical connections it choses the
+    shortest time. A trajectory cannot return to one of the ridden stations. The
+    algorithm keeps track of the ridden critical connections and stops when all
+    have been ridden or when the max trajectories are used.
+    """
 
     # create Trains object
     trains = classes.classes.Trains(data)

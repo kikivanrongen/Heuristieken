@@ -1,23 +1,11 @@
-import csv
-import random
-import classes.classes
-from algorithms.random_sol import random_sol
-from algorithms.random_sol_noreturn import random_sol_noreturn
-from algorithms.cornerstart import cornerstart
-from algorithms.cornerstart_noreturn import cornerstart_noreturn
-from algorithms.hillclimber import hillclimber
-from algorithms.greedy import greedy
-from visualisation.visual import visual
-from visualisation.visual import visual_sol
+import __init__ as im
 
-from functions.random_trajectory_noreturns import random_trajectory_noreturns
-
-NZ_Holland = classes.classes.Stations()
+NZ_Holland = im.classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
 NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
 # load data the Nederlands
-Nederland = classes.classes.Stations()
+Nederland = im.classes.classes.Stations()
 Nederland.stations("data/StationsNationaal.csv")
 Nederland.railroads("data/ConnectiesNationaal.csv")
 

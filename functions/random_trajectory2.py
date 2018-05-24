@@ -3,6 +3,12 @@ import classes.classes
 import random
 
 def random_trajectory2(start, data, max_min, returns):
+    """ This funtion gives a random trajectory for one train. This trajectory
+    depends on the start station, given in random_solution, the data, maximum
+    amount of minutes en whether it is possible to return to the previous station,
+    also given in random_solution. This function is called when a single
+    trajectory is needed. """
+
 
     minutes = 0
     train = classes.classes.Train(start, data)

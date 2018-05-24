@@ -10,11 +10,10 @@ def visual_sol(data, solution):
     x = data.x
     y = data.y
 
-    # loop through trains
+    # loop through trains and draw a trajectory
     for train in solution.trains:
         x_cor = []
         y_cor = []
-
         past_stations = train.past_stations
 
         # append x and y coordinates for past stations
@@ -27,6 +26,7 @@ def visual_sol(data, solution):
         plt.plot(y_cor, x_cor)
 
     # plot all trajectories in one plot
+    plt.figure(2)
     plt.title("Visualisatie Oplossing")
     plt.xlabel("y")
     plt.ylabel("x")
@@ -77,7 +77,7 @@ def visual(data, title):
 
         plt.plot([y_cor, y_cor2], [x_cor, x_cor2], "red")
 
-    #plot all stations
+    # plot all stations
     plt.plot(y, x, "bo")
 
     # plot critical stations
@@ -89,6 +89,7 @@ def visual(data, title):
     plt.plot(y_cor_cs, x_cor_cs, "ro")
 
     # name plot and show it
+    plt.figure(1)
     plt.title(title)
     plt.xlabel("y")
     plt.ylabel("x")

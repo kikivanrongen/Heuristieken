@@ -2,31 +2,36 @@ import classes.classes
 import random
 import copy
 
-def greedy(data, max_t):
-    """ Greedy iterative algorithm """
+def greedy(data, max_t, max_min):
+    """ Greedy iterative algorithm. This algorithm starts at a random station
+    and checks the scores of every possible next station. After checking every
+    score of every possible connection, the algorithm chooses the station
+    with the highest score. """
 
     # create Trains object and copy
     trains = classes.classes.Trains(data)
     copy_trains = classes.classes.Trains(data)
 
+    # create list of start stations
+    # start_stations = copy.deepcopy(data.names)
+
+    # for amount of minutes
     for t in range(max_t):
 
         # set minutes
         minutes = 0
+        previous = []
 
-        # determine start position (geen uithoek!)
+        # determine start position and remove element from start stations list
         start = random.choice(data.names)
+        # start_stations.remove(start)
 
         # store previous stations
-        previous = []
         previous.append(start)
 
         # create Train object and copy
         train = classes.classes.Train(start, data)
         copy_train = classes.classes.Train(start, data)
-
-        # determine start start score
-        previous_score = trains.score()
 
         while minutes < max_min:
 
@@ -38,10 +43,14 @@ def greedy(data, max_t):
             # check for corner station
             if len(possible) != 1:
 
-                # make sure train does not go to previous station
+                # remove previous stations from possibilities
                 for prev in previous:
                     if prev in possible:
                         possible.remove(prev)
+
+            # if no connections are possible, stop train
+            if not possible:
+                break
 
             # iterate over connections
             for element in possible:
@@ -58,30 +67,22 @@ def greedy(data, max_t):
             # find best score in list
             best_score = max(new_scores.values())
 
-            # go to new location if score is improved
-            if best_score > 0.90 * previous_score:
+            # determine corresponding go to location
+            for location, score in new_scores.items():
+                if score == best_score:
+                    best_option = location
 
-                # determine corresponding go to location
-                for location, score in new_scores.items():
-                    if score == best_score:
-                        best_option = location
+            # update previous location list
+            previous.append(train.location)
 
-                # update train
-                train.update_trajectory(best_option)
-                copy_train = copy.deepcopy(train)
+            # update train
+            train.update_trajectory(best_option)
+            copy_train = copy.deepcopy(train)
 
-                # update elapsed time
-                minutes += train.time_elapsed
+            # update elapsed time
+            minutes += train.time_elapsed
 
-                # update previous location and previous score
-                previous.append(train.location)
-                previous_score = best_score
-
-            else:
-                # stop train
-                minutes = 120
-
-        # add train to trains object
+        # add train to trains object, copy and remove start station from list
         trains.add_train(train)
         copy_trains = copy.deepcopy(trains)
 

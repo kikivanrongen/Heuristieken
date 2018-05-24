@@ -1,13 +1,10 @@
-# In dit document worden de stations en de uiteindelijke optimale
-# route gevisualiseerd dmv van een scatterplot
-
 import classes.classes
 import matplotlib.pyplot as plt
 from algorithms.firstsol import firstsol
 
 
 def visual_solution(data, solution):
-    "Function that visualizes the solution."
+    "Function that visualizes the solution. Every trajectory has another color."
 
     # get stations and coordinates
     stations = data.names
@@ -31,13 +28,18 @@ def visual_solution(data, solution):
         plt.plot(y_cor, x_cor)
 
     # plot all trajectories in one plot
-    plt.title('Visualisation Solution')
-    plt.xlabel('y')
-    plt.ylabel('x')
+    plt.title("Visualisatie Oplossing")
+    plt.xlabel("y")
+    plt.ylabel("x")
     plt.show()
 
 
 def visual(data, title):
+    """ Visualisation of the possible trajectories. The critical connections
+    and critical stations are marked red. The other stations and connections are
+    marked blue. """
+
+    # define variables
     stations = data.names
     x = data.x
     y = data.y
@@ -45,6 +47,7 @@ def visual(data, title):
     critical_connections = data.critical_connections
     critical_stations = data.critical_stations
 
+    # define lists for x and y coordinates for critical stations and all stations
     x_cor_s = []
     y_cor_s = []
     x_cor_cs = []
@@ -86,6 +89,7 @@ def visual(data, title):
 
     plt.plot(y_cor_cs, x_cor_cs, "ro")
 
+    # name plot and show it
     plt.title(title)
     plt.xlabel("y")
     plt.ylabel("x")

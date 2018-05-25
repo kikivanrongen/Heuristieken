@@ -1,8 +1,8 @@
 import classes.classes
 import random
-from functions.random_trajectory2 import random_trajectory2
+from functions.random_trajectory import random_trajectory
 
-def random_solution2(data, max_t, max_min, corner = None, returns = None):
+def random_solution(data, max_t, max_min, corner = None, returns = None):
     """ This function gives a random solution given the data, maximum amount of
     trains, maximum amount of minutes, whether to start in a corner or not and
     whether to return to the previous station or not. The stations are choosen
@@ -29,7 +29,7 @@ def random_solution2(data, max_t, max_min, corner = None, returns = None):
             start = random.choice(data.names)
 
         # make trajectory
-        random_traj = random_trajectory2(start, data, max_min, returns)
+        random_traj = random_trajectory(start, data, max_min, returns)
 
         # add train to trains
         trains.add_train(random_traj)

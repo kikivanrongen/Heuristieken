@@ -1,12 +1,12 @@
 import __init__ as im
 
 # load data NZ Holland
-NZ_Holland = im.classes.classes.Stations()
+NZ_Holland = im.pythoncode.classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
 NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
 # load data the Nederlands
-Nederland = im.classes.classes.Stations()
+Nederland = im.pythoncode.classes.classes.Stations()
 Nederland.stations("data/StationsNationaal.csv")
 Nederland.railroads("data/ConnectiesNationaal.csv")
 

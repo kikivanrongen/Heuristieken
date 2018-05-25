@@ -1,10 +1,4 @@
-import classes.classes
-import random
-import copy
-from algorithms.cornerstart_noreturn import cornerstart_noreturn
-from algorithms.cornerstart import cornerstart
-from functions.random_trajectory import random_trajectory
-from functions.random_trajectory_noreturns import random_trajectory_noreturns
+import __init__ as im
 
 def hillclimber(data, startfunction, trajectory, max_t, max_min, max_loop = 1000):
     """ Hill Climber iterative algortihm. Starts with a random solution with no
@@ -14,8 +8,8 @@ def hillclimber(data, startfunction, trajectory, max_t, max_min, max_loop = 1000
     trajectory. """
 
     # start with a possible solution
-    solution = startfunction(data, max_t, max_min)
-    copy_solution = copy.deepcopy(solution)
+    solution = startfunction(data, max_t, max_min, False, False)
+    copy_solution = im.copy.deepcopy(solution)
 
     # calculate score
     current_score = copy_solution.score()
@@ -25,7 +19,7 @@ def hillclimber(data, startfunction, trajectory, max_t, max_min, max_loop = 1000
     for element in solution.trains:
 
         # determine new start station
-        start = random.choice(data.names)
+        start = im.random.choice(data.names)
 
         # iterate new trajectories
         for i in range(max_loop):
@@ -41,7 +35,7 @@ def hillclimber(data, startfunction, trajectory, max_t, max_min, max_loop = 1000
                 current_score = temporary_score
 
             # set copy
-            copy_solution = copy.deepcopy(solution)
+            copy_solution = im.copy.deepcopy(solution)
 
         # update index
         index += 1

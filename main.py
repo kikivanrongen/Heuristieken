@@ -6,7 +6,7 @@ NZ_Holland.stations("data/StationsHolland.csv")
 NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
 # load data the Nederlands
-Nederland = im.pythoncode..classes.classes.Stations()
+Nederland = im.pythoncode.classes.classes.Stations()
 Nederland.stations("data/StationsNationaal.csv")
 Nederland.railroads("data/ConnectiesNationaal.csv")
 
@@ -127,7 +127,7 @@ if args.nederland == True:
     if args.hillclimber == True:
 
         # calling the function hillclimber with number of iterations
-        hillclimber = im.python.hillclimber(Nederland, im.pythoncode.random_solution,
+        hillclimber = im.pythoncode.hillclimber(Nederland, im.pythoncode.random_solution,
         im.pythoncode.random_trajectory, max_t_n, max_min_n, args.iterations)
 
         # print the best score
@@ -252,5 +252,5 @@ elif args.noordzuid == True:
         print("Past stations:")
         for train in best_option.trains:
             print(train.past_stations)
-            
+
         im.pythoncode.visual_solution(NZ_Holland, best_option, "Dijkstra solution (NZ Holland)")

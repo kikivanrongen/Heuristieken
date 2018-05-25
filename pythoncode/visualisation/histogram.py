@@ -5,7 +5,7 @@ def hist(scorevector, title):
     scorevector of all iterations will be the input argument."""
 
     # plot histogram
-    im.plt.hist(scorevector, 30)
+    im.plt.hist(scorevector, 20)
     im.plt.xlabel("score")
     im.plt.ylabel("frequentie")
     im.plt.title(title)

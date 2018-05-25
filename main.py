@@ -183,12 +183,10 @@ if args.nederland == True:
 
         # loop to iterate over the dijkstra algorithm
         for i in range(args.iterations):
-
             # get a new score and route from the algorithm an add to array
             option = im.dijkstra(Nederland, max_t_n, max_min_n)
             new_score = option.score()
             dijks.append(new_score)
-
             # when new score is higher update score and best option
             if new_score > score:
                 score = new_score
@@ -225,17 +223,30 @@ elif args.noordzuid == True:
         for train in hillclimber.trains:
             print(train.past_stations)
 
+        # visualize the optimal solution
         im.visual_solution(NZ_Holland, hillclimber, "Hillclimber solution (NZ Holland)")
+
+    # if statement when the argument -greedy is used
     elif args.greedy == True:
+
+        # create score variable and array
         score = 0
         greed = []
+
+        # loop for iterations of the greedy algorithm
         for i in range(args.iterations):
+
+            # get a new score and route from the algorithm an add to array
             option = im.greedy(NZ_Holland, max_t_nz, max_min_nz)
             new_score = option.score()
             greed.append(new_score)
+
+            # when new score is higher update score
             if new_score > score:
                 score = new_score
                 best_option = option
+
+        # print best score
         print("Best score:")
         print(score)
 
@@ -244,17 +255,28 @@ elif args.noordzuid == True:
         for train in best_option.trains:
             print(train.past_stations)
 
+        # visualize optimal solution
         im.visual_solution(NZ_Holland, best_option, "Greedy solution (NZ Holland)")
+
+    # if statement when the argument -dijkstra is used
     elif args.dijkstra == True:
+
+        # create score variable and array
         score = 0
         dijks = []
+
+        # loop to iterate the dijkstra algorithm
         for i in range(args.iterations):
+            # get a new score and route from the algorithm an add to array
             option = im.dijkstra(NZ_Holland, max_t_nz, max_min_nz)
             new_score = option.score()
             dijks.append(new_score)
+            # when new score is higher update score and best option
             if new_score > score:
                 score = new_score
                 best_option = option
+
+        # print best score
         print("Best score:")
         print(score)
 
@@ -263,4 +285,5 @@ elif args.noordzuid == True:
         for train in best_option.trains:
             print(train.past_stations)
 
+        # visualize optimal solution
         im.visual_solution(NZ_Holland, best_option, "Dijkstra solution (NZ Holland)")

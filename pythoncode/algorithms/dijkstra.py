@@ -108,6 +108,4 @@ def dijkstra(data, max_t, max_min):
         # update number of Trains
         t += 1
 
-    print(past_critical_connections, len(past_critical_connections))
-
     return trains

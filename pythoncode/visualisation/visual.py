@@ -1,6 +1,6 @@
 import __init__ as im
 
-def visual_solution(data, solution):
+def visual_solution(data, solution, title):
     "Function that visualizes the solution. Every trajectory has another color."
 
     # get stations and coordinates
@@ -24,8 +24,15 @@ def visual_solution(data, solution):
         im.plt.plot(y_cor, x_cor)
 
     # plot all trajectories in one plot
+<<<<<<< HEAD:visualisation/visual.py
+    plt.title(title)
+    plt.xlabel("y")
+    plt.ylabel("x")
+    plt.show()
+=======
     im.plt.title("Visualisatie Oplossing")
     im.plt.show()
+>>>>>>> 540b6aea7866f1f9029ac873721df9de40fe3c4c:pythoncode/visualisation/visual.py
 
 
 def visual(data, title):
@@ -84,5 +91,12 @@ def visual(data, title):
     im.plt.plot(y_cor_cs, x_cor_cs, "ro")
 
     # name plot and show it
+<<<<<<< HEAD:visualisation/visual.py
+    plt.title(title)
+    plt.xlabel("y")
+    plt.ylabel("x")
+    plt.show()
+=======
     im.plt.title(title)
     im.plt.show()
+>>>>>>> 540b6aea7866f1f9029ac873721df9de40fe3c4c:pythoncode/visualisation/visual.py

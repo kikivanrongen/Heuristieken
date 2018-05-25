@@ -1,12 +1,12 @@
 import __init__ as im
 
 # load data NZ Holland
-NZ_Holland = im.classes.classes.Stations()
+NZ_Holland = im.pythoncode.classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
 NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
 # load data the Nederlands
-Nederland = im.pythoncode.classes.classes.Stations()
+Nederland = im.pythoncode..classes.classes.Stations()
 Nederland.stations("data/StationsNationaal.csv")
 Nederland.railroads("data/ConnectiesNationaal.csv")
 
@@ -164,10 +164,17 @@ if args.nederland == True:
         # visualize the optimal solution
         im.pythoncode.visual_solution(Nederland, best_option, "Greedy solution (Nederland)")
 
+    # if statement if the argument -dijkstra is used
     elif args.dijkstra == True:
+
+        # create score variable and array
         score = 0
         dijks = []
+
+        # loop to iterate over the dijkstra algorithm
         for i in range(args.iterations):
+
+            # get a new score and route from the algorithm an add to array
             option = im.pythoncode.dijkstra(Nederland, max_t_n, max_min_n)
             new_score = option.score()
             dijks.append(new_score)

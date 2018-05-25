@@ -1,12 +1,12 @@
 import __init__ as im
 
 # load data NZ Holland
-NZ_Holland = im.classes.classes.Stations()
+NZ_Holland = im.pythoncode.classes.classes.Stations()
 NZ_Holland.stations("data/StationsHolland.csv")
 NZ_Holland.railroads("data/ConnectiesHolland.csv")
 
 # load data the Nederlands
-Nederland = im.pythoncode.classes.classes.Stations()
+Nederland = im.pythoncode..classes.classes.Stations()
 Nederland.stations("data/StationsNationaal.csv")
 Nederland.railroads("data/ConnectiesNationaal.csv")
 
@@ -134,6 +134,11 @@ if args.nederland == True:
         print("Best score:")
         print(hillclimber.score())
 
+        # print route of the trains
+        print("Past stations:")
+        for train in hillclimber.trains:
+            print(train.past_stations)
+
         # visualize the optimal solution
         im.pythoncode.visual_solution(Nederland, hillclimber, "Hillclimber solution (Nederland)")
 
@@ -161,13 +166,25 @@ if args.nederland == True:
         print("Best score:")
         print(score)
 
+        # print route of the trains
+        print("Past stations:")
+        for train in best_option.trains:
+            print(train.past_stations)
+
         # visualize the optimal solution
         im.pythoncode.visual_solution(Nederland, best_option, "Greedy solution (Nederland)")
 
+    # if statement if the argument -dijkstra is used
     elif args.dijkstra == True:
+
+        # create score variable and array
         score = 0
         dijks = []
+
+        # loop to iterate over the dijkstra algorithm
         for i in range(args.iterations):
+
+            # get a new score and route from the algorithm an add to array
             option = im.pythoncode.dijkstra(Nederland, max_t_n, max_min_n)
             new_score = option.score()
             dijks.append(new_score)
@@ -176,6 +193,12 @@ if args.nederland == True:
                 best_option = option
         print("Best score:")
         print(score)
+
+        # print route of the trains
+        print("Past stations:")
+        for train in best_option.trains:
+            print(train.past_stations)
+
         im.pythoncode.visual_solution(Nederland, best_option, "Dijkstra solution (Nederland)")
 
 elif args.noordzuid == True:
@@ -186,6 +209,12 @@ elif args.noordzuid == True:
             im.pythoncode.random_trajectory, max_t_nz, max_min_nz, args.iterations)
         print("Best score:")
         print(hillclimber.score())
+
+        # print route of the trains
+        print("Past stations:")
+        for train in hillclimber.trains:
+            print(train.past_stations)
+
         im.pythoncode.visual_solution(NZ_Holland, hillclimber, "Hillclimber solution (NZ Holland)")
     elif args.greedy == True:
         score = 0
@@ -199,6 +228,12 @@ elif args.noordzuid == True:
                 best_option = option
         print("Best score:")
         print(score)
+
+        # print route of the trains
+        print("Past stations:")
+        for train in best_option.trains:
+            print(train.past_stations)
+
         im.pythoncode.visual_solution(NZ_Holland, best_option, "Greedy solution (NZ Holland)")
     elif args.dijkstra == True:
         score = 0
@@ -212,4 +247,10 @@ elif args.noordzuid == True:
                 best_option = option
         print("Best score:")
         print(score)
+
+        # print route of the trains
+        print("Past stations:")
+        for train in best_option.trains:
+            print(train.past_stations)
+            
         im.pythoncode.visual_solution(NZ_Holland, best_option, "Dijkstra solution (NZ Holland)")

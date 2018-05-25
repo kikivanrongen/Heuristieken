@@ -1,6 +1,4 @@
-import classes.classes
-import random
-import copy
+import __init__ as im
 
 def random_trajectory(start, data, max_min, returns):
     """ This funtion gives a random trajectory for one train. This trajectory
@@ -9,17 +7,16 @@ def random_trajectory(start, data, max_min, returns):
     also given in random_solution. This function is called when a single
     trajectory is needed. """
 
-
     # set variables and
     minutes = 0
-    train = classes.classes.Train(start, data)
+    train = im.pythoncode.classes.classes.Train(start, data)
     previous = start
 
     # while loop for constrains
     while minutes < max_min:
 
         # possible connections from last station
-        possible = copy.deepcopy(data.connections[train.location])
+        possible = im.copy.deepcopy(data.connections[train.location])
 
         # remove previous from possible
         if returns == False:
@@ -30,7 +27,7 @@ def random_trajectory(start, data, max_min, returns):
                 break
 
         # pick random possible connection from possible connections
-        next = random.choice(possible)
+        next = im.random.choice(possible)
 
         # update previous location
         previous = train.location

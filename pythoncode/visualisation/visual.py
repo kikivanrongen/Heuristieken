@@ -1,6 +1,4 @@
-import classes.classes
-import matplotlib.pyplot as plt
-
+import __init__ as im
 
 def visual_solution(data, solution, title):
     "Function that visualizes the solution. Every trajectory has another color."
@@ -23,13 +21,18 @@ def visual_solution(data, solution, title):
             y_cor.append(y[index])
 
         # plot trajectories
-        plt.plot(y_cor, x_cor)
+        im.plt.plot(y_cor, x_cor)
 
     # plot all trajectories in one plot
+<<<<<<< HEAD:visualisation/visual.py
     plt.title(title)
     plt.xlabel("y")
     plt.ylabel("x")
     plt.show()
+=======
+    im.plt.title("Visualisatie Oplossing")
+    im.plt.show()
+>>>>>>> 540b6aea7866f1f9029ac873721df9de40fe3c4c:pythoncode/visualisation/visual.py
 
 
 def visual(data, title):
@@ -62,7 +65,7 @@ def visual(data, title):
             x_cor2 = x[index2]
             y_cor2 = y[index2]
 
-            plt.plot([y_cor, y_cor2], [x_cor, x_cor2], "blue")
+            im.plt.plot([y_cor, y_cor2], [x_cor, x_cor2], "blue")
 
     # plot critical connections
     for a, b in critical_connections:
@@ -74,10 +77,10 @@ def visual(data, title):
         x_cor2 = x[index2]
         y_cor2 = y[index2]
 
-        plt.plot([y_cor, y_cor2], [x_cor, x_cor2], "red")
+        im.plt.plot([y_cor, y_cor2], [x_cor, x_cor2], "red")
 
     # plot all stations
-    plt.plot(y, x, "bo")
+    im.plt.plot(y, x, "bo")
 
     # plot critical stations
     for station in critical_stations:
@@ -85,10 +88,15 @@ def visual(data, title):
         x_cor_cs.append(x[index])
         y_cor_cs.append(y[index])
 
-    plt.plot(y_cor_cs, x_cor_cs, "ro")
+    im.plt.plot(y_cor_cs, x_cor_cs, "ro")
 
     # name plot and show it
+<<<<<<< HEAD:visualisation/visual.py
     plt.title(title)
     plt.xlabel("y")
     plt.ylabel("x")
     plt.show()
+=======
+    im.plt.title(title)
+    im.plt.show()
+>>>>>>> 540b6aea7866f1f9029ac873721df9de40fe3c4c:pythoncode/visualisation/visual.py

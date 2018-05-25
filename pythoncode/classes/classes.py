@@ -1,4 +1,4 @@
-import csv
+import __init__ as im
 
 class Stations():
     """
@@ -38,7 +38,7 @@ class Stations():
         with open (stations_csv) as file_stations:
 
             # read csv file of stations and return list of columns
-            read_stations = csv.reader(file_stations)
+            read_stations = im.csv.reader(file_stations)
 
             # iterate over rows and append to class
             for row in read_stations:
@@ -66,7 +66,7 @@ class Stations():
         with open (connections_csv) as file_connections:
 
             # read csv file of connections and return list of columns
-            read_connections = csv.reader(file_connections)
+            read_connections = im.csv.reader(file_connections)
 
             # iterate over rows and append to class
             for row in read_connections:

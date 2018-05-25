@@ -1,6 +1,4 @@
-import classes.classes
-import random
-from functions.random_trajectory import random_trajectory
+import __init__ as im
 
 def random_solution(data, max_t, max_min, corner = None, returns = None):
     """ This function gives a random solution given the data, maximum amount of
@@ -11,7 +9,7 @@ def random_solution(data, max_t, max_min, corner = None, returns = None):
     form the whole solution. """
 
     # initalize variables
-    trains = classes.classes.Trains(data)
+    trains = im.pythoncode.classes.classes.Trains(data)
     connections = data.connections
     one_connection = []
 
@@ -23,13 +21,13 @@ def random_solution(data, max_t, max_min, corner = None, returns = None):
             for key in connections:
                 if len(connections[key]) == 1:
                     one_connection.append(key)
-            start = random.choice(one_connection)
+            start = im.random.choice(one_connection)
 
         else:
-            start = random.choice(data.names)
+            start = im.random.choice(data.names)
 
         # make trajectory
-        random_traj = random_trajectory(start, data, max_min, returns)
+        random_traj = im.random_trajectory(start, data, max_min, returns)
 
         # add train to trains
         trains.add_train(random_traj)

@@ -1,6 +1,4 @@
-import classes.classes
-import random
-import copy
+import __init__ as im
 
 def greedy(data, max_t, max_min):
     """ Greedy iterative algorithm. This algorithm starts at a random station
@@ -9,8 +7,8 @@ def greedy(data, max_t, max_min):
     with the highest score. """
 
     # create Trains object and copy
-    trains = classes.classes.Trains(data)
-    copy_trains = classes.classes.Trains(data)
+    trains = im.pythoncode.classes.classes.Trains(data)
+    copy_trains = im.pythoncode.classes.classes.Trains(data)
 
     # for amount of minutes
     for t in range(max_t):
@@ -20,22 +18,22 @@ def greedy(data, max_t, max_min):
         previous = []
 
         # determine start position and remove element from start stations list
-        start = random.choice(data.names)
+        start = im.random.choice(data.names)
         # start_stations.remove(start)
 
         # store previous stations
         previous.append(start)
 
         # create Train object and copy
-        train = classes.classes.Train(start, data)
-        copy_train = classes.classes.Train(start, data)
+        train = im.pythoncode.classes.classes.Train(start, data)
+        copy_train = im.pythoncode.classes.classes.Train(start, data)
 
         while minutes < max_min:
 
             new_scores = {}
 
             # find possible connections
-            possible = copy.deepcopy(data.connections[train.location])
+            possible = im.copy.deepcopy(data.connections[train.location])
 
             # check for corner station
             if len(possible) != 1:
@@ -58,8 +56,8 @@ def greedy(data, max_t, max_min):
                 new_scores[element] = copy_trains.score()
 
                 # reset train and trains
-                copy_train = copy.deepcopy(train)
-                copy_trains = copy.deepcopy(trains)
+                copy_train = im.copy.deepcopy(train)
+                copy_trains = im.copy.deepcopy(trains)
 
             # find best score in list
             best_score = max(new_scores.values())
@@ -74,13 +72,13 @@ def greedy(data, max_t, max_min):
 
             # update train
             train.update_trajectory(best_option)
-            copy_train = copy.deepcopy(train)
+            copy_train = im.copy.deepcopy(train)
 
             # update elapsed time
             minutes += train.time_elapsed
 
         # add train to trains object, copy and remove start station from list
         trains.add_train(train)
-        copy_trains = copy.deepcopy(trains)
+        copy_trains = im.copy.deepcopy(trains)
 
     return trains

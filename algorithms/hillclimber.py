@@ -1,10 +1,8 @@
 import classes.classes
 import random
 import copy
-from algorithms.cornerstart_noreturn import cornerstart_noreturn
-from algorithms.cornerstart import cornerstart
 from functions.random_trajectory import random_trajectory
-from functions.random_trajectory_noreturns import random_trajectory_noreturns
+from algorithms.random_solution import random_solution
 
 def hillclimber(data, startfunction, trajectory, max_t, max_min, max_loop = 1000):
     """ Hill Climber iterative algortihm. Starts with a random solution with no

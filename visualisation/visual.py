@@ -2,7 +2,7 @@ import classes.classes
 import matplotlib.pyplot as plt
 
 
-def visual_solution(data, solution):
+def visual_solution(data, solution, title):
     "Function that visualizes the solution. Every trajectory has another color."
 
     # get stations and coordinates
@@ -26,8 +26,7 @@ def visual_solution(data, solution):
         plt.plot(y_cor, x_cor)
 
     # plot all trajectories in one plot
-    plt.figure(2)
-    plt.title("Visualisatie Oplossing")
+    plt.title(title)
     plt.xlabel("y")
     plt.ylabel("x")
     plt.show()
@@ -89,7 +88,6 @@ def visual(data, title):
     plt.plot(y_cor_cs, x_cor_cs, "ro")
 
     # name plot and show it
-    plt.figure(1)
     plt.title(title)
     plt.xlabel("y")
     plt.ylabel("x")

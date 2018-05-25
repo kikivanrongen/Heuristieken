@@ -134,6 +134,11 @@ if args.nederland == True:
         print("Best score:")
         print(hillclimber.score())
 
+        # print route of the trains
+        print("Past stations:")
+        for train in hillclimber.trains:
+            print(train.past_stations)
+
         # visualize the optimal solution
         im.pythoncode.visual_solution(Nederland, hillclimber, "Hillclimber solution (Nederland)")
 
@@ -161,6 +166,11 @@ if args.nederland == True:
         print("Best score:")
         print(score)
 
+        # print route of the trains
+        print("Past stations:")
+        for train in best_option.trains:
+            print(train.past_stations)
+
         # visualize the optimal solution
         im.pythoncode.visual_solution(Nederland, best_option, "Greedy solution (Nederland)")
 
@@ -183,6 +193,12 @@ if args.nederland == True:
                 best_option = option
         print("Best score:")
         print(score)
+
+        # print route of the trains
+        print("Past stations:")
+        for train in best_option.trains:
+            print(train.past_stations)
+
         im.pythoncode.visual_solution(Nederland, best_option, "Dijkstra solution (Nederland)")
 
 elif args.noordzuid == True:
@@ -193,6 +209,12 @@ elif args.noordzuid == True:
             im.pythoncode.random_trajectory, max_t_nz, max_min_nz, args.iterations)
         print("Best score:")
         print(hillclimber.score())
+
+        # print route of the trains
+        print("Past stations:")
+        for train in hillclimber.trains:
+            print(train.past_stations)
+
         im.pythoncode.visual_solution(NZ_Holland, hillclimber, "Hillclimber solution (NZ Holland)")
     elif args.greedy == True:
         score = 0
@@ -206,6 +228,12 @@ elif args.noordzuid == True:
                 best_option = option
         print("Best score:")
         print(score)
+
+        # print route of the trains
+        print("Past stations:")
+        for train in best_option.trains:
+            print(train.past_stations)
+
         im.pythoncode.visual_solution(NZ_Holland, best_option, "Greedy solution (NZ Holland)")
     elif args.dijkstra == True:
         score = 0
@@ -219,4 +247,10 @@ elif args.noordzuid == True:
                 best_option = option
         print("Best score:")
         print(score)
+
+        # print route of the trains
+        print("Past stations:")
+        for train in best_option.trains:
+            print(train.past_stations)
+            
         im.pythoncode.visual_solution(NZ_Holland, best_option, "Dijkstra solution (NZ Holland)")

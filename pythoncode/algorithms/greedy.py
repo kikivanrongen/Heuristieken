@@ -10,16 +10,15 @@ def greedy(data, max_t, max_min):
     trains = im.pythoncode.classes.classes.Trains(data)
     copy_trains = im.pythoncode.classes.classes.Trains(data)
 
-    # for amount of minutes
+    # iterate over number of trains
     for t in range(max_t):
 
         # set minutes
         minutes = 0
         previous = []
 
-        # determine start position and remove element from start stations list
+        # determine start position
         start = im.random.choice(data.names)
-        # start_stations.remove(start)
 
         # store previous stations
         previous.append(start)
@@ -28,6 +27,7 @@ def greedy(data, max_t, max_min):
         train = im.pythoncode.classes.classes.Train(start, data)
         copy_train = im.pythoncode.classes.classes.Train(start, data)
 
+        # continue untill maximum minutes is reached
         while minutes < max_min:
 
             new_scores = {}
@@ -50,7 +50,7 @@ def greedy(data, max_t, max_min):
             # iterate over connections
             for element in possible:
 
-                # calculate score for new trajectory
+                # calculate score for new trajectory and append to dictionary
                 copy_train.update_trajectory(element)
                 copy_trains.add_train(copy_train)
                 new_scores[element] = copy_trains.score()
@@ -62,7 +62,7 @@ def greedy(data, max_t, max_min):
             # find best score in list
             best_score = max(new_scores.values())
 
-            # determine corresponding go to location
+            # determine corresponding go-to location
             for location, score in new_scores.items():
                 if score == best_score:
                     best_option = location
@@ -70,14 +70,14 @@ def greedy(data, max_t, max_min):
             # update previous location list
             previous.append(train.location)
 
-            # update train
+            # update train and copy
             train.update_trajectory(best_option)
             copy_train = im.copy.deepcopy(train)
 
             # update elapsed time
             minutes += train.time_elapsed
 
-        # add train to trains object, copy and remove start station from list
+        # add train to trains object and copy
         trains.add_train(train)
         copy_trains = im.copy.deepcopy(trains)
 

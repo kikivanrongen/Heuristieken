@@ -7,7 +7,7 @@ def hist(scorevector, title):
 
     # plot histogram
     plt.figure(3)
-    plt.hist(scorevector, 50)
+    plt.hist(scorevector, 30)
     plt.xlabel("score")
     plt.ylabel("frequentie")
     plt.title(title)

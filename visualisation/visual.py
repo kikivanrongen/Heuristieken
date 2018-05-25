@@ -2,7 +2,7 @@ import classes.classes
 import matplotlib.pyplot as plt
 
 
-def visual_sol(data, solution):
+def visual_solution(data, solution):
     "Function that visualizes the solution. Every trajectory has another color."
 
     # get stations and coordinates

@@ -2,8 +2,8 @@ import __init__ as im
 
 def hillclimber(data, startfunction, trajectory, max_t, max_min, max_loop = 1000):
     """ Hill Climber iterative algortihm. Starts with a random solution with no
-    returns. Thereafter in changes one trajectory a given number of times (in
-    default 1000 timer) and checks whether the score is higher or not. It
+    returns. Thereafter it changes one trajectory a given number of times (in
+    default 1000 times) and checks whether the score is higher or not. It
     chooses the trajectory with the highest score. This is done for every
     trajectory.
     """

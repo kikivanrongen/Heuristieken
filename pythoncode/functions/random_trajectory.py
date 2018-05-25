@@ -5,20 +5,21 @@ def random_trajectory(start, data, max_min, returns):
     depends on the start station, given in random_solution, the data, maximum
     amount of minutes en whether it is possible to return to the previous station,
     also given in random_solution. This function is called when a single
-    trajectory is needed. """
+    trajectory is needed.
+    """
 
-    # set variables and
+    # set variables and make train object
     minutes = 0
     train = im.pythoncode.classes.classes.Train(start, data)
     previous = start
 
-    # while loop for constrains
+    # while loop for when maximum minutes is reached
     while minutes < max_min:
 
         # possible connections from last station
         possible = im.copy.deepcopy(data.connections[train.location])
 
-        # remove previous from possible
+        # remove previous from possible if no return is input 
         if returns == False:
             if previous in possible:
                 possible.remove(previous)

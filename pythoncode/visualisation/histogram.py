@@ -2,7 +2,9 @@ import __init__ as im
 
 def hist(scorevector, title):
     """ Function that makes a histogram of the interations of the solution. The
-    scorevector of all iterations will be the input argument."""
+    scorevector of all iterations will be the input argument. Besides the
+    title is an inputargument.
+    """
 
     # plot histogram
     im.plt.hist(scorevector, 20)

@@ -4,15 +4,16 @@ class Stations():
     """
     Open and read data, and store data in variables accordingly. This object constains
     the environment of the project.
-
-    The init function defines all variables that are set with data in the following
-    functions: stations and railroads. This contains characteristics of the stations,
-    such as: name, coordinates, critical/non-critical, connections (critical / non-critical)
-    and connections with time. It also stores stations that have a critical connection seperately.
-
     """
 
     def __init__(self):
+        """
+        The init function defines all variables that are set with data in the
+        following functions: stations and railroads. This contains characteristics
+        of the stations, such as: name, coordinates, critical/non-critical, connections
+        (critical / non-critical) and connections with time. It also stores stations
+        that have a critical connection seperately.
+        """
 
         self.names = []
         self.x = []
@@ -30,8 +31,8 @@ class Stations():
     def stations(self, stations_csv):
         """
         This function opens and reads the station file that contains all stations
-        in the environment with corresponding coordinates. It also keeps track of critical stations.
-
+        in the environment with corresponding coordinates. It also keeps track of
+        critical stations.
         """
 
         # open csv file with stations
@@ -56,10 +57,9 @@ class Stations():
     def railroads(self, connections_csv):
         """
         This function opens and reads the connections file that contains all possible
-        connections in the environment. The connections are stored in a dictionary as location: connection,
-        location: connection time and location: (connection, time). It also stores
-        critical connections in a seperate variable.
-
+        connections in the environment. The connections are stored in a dictionary as
+        location: connection, location: connection time and location: (connection, time).
+        It also stores critical connections in a seperate variable.
         """
 
         # open csv file of connections
@@ -101,15 +101,17 @@ class Stations():
                 self.stations_with_critical_connection = list(set(self.stations_with_critical_connection))
 
 class Train():
-
     """
     Object that stores information of one train at a certain point in the trajectory
-    in the given environment. This contains the current location, past stations,
-    past connections (critical/non-critical with count variable) and elapsed time.
-
+    in the given environment.
     """
 
     def __init__(self, location, stations):
+        """
+        The init function contains sets variables for the current location,
+        past stations, past connections (critical/non-critical with count variable)
+        and elapsed time.
+        """
 
         self.location = location
         self.stations = stations
@@ -126,7 +128,6 @@ class Train():
         This function checks if a go-to location is valid and if so, updates the
         trajectory. The elapsed time, past stations (critical/non-critical) and
         past critical connections are adjusted accordingly.
-
         """
 
         self.to_location = to_location
@@ -159,14 +160,16 @@ class Train():
 class Trains():
     """
     This object keeps track of the entire solution given a particular environment.
-    It stores all the driven trajectories of class Train in a list and counts the
-    number of trains. Also, it contains two functions for adding new trains and
-    calculating the score of a certain solution.
-
+    It contains two functions for adding new trains and calculating the score of
+    a certain solution.
     """
 
 
     def __init__(self, stations):
+        """
+        The init function stores all the driven trajectories of class Train
+        in a list and counts the number of trains.
+        """
 
         self.trains = []
         self.stations = stations
@@ -177,7 +180,6 @@ class Trains():
         This function adds a new trajectory (train) to the entire solution. This
         trajectory is of class Train and is stored in the list trains. A count variable
         is also logged.
-
         """
 
         self.train = train
@@ -191,7 +193,6 @@ class Trains():
         driven critical connections, the number of trains and the elapsed time of
         all trains. In order to calculate the proportion the covered critical connections
         of every train are stored in one list and duplicates are removed.
-
         """
 
         # set variables

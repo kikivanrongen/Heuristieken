@@ -127,8 +127,8 @@ if args.nederland == True:
     if args.hillclimber == True:
 
         # calling the function hillclimber with number of iterations
-        hillclimber = im.pythoncode.hillclimber(Nederland, im.pythoncode.random_solution,
-        im.pythoncode.random_trajectory, max_t_n, max_min_n, args.iterations)
+        hillclimber = im.hillclimber(Nederland, im.random_solution,
+        im.random_trajectory, max_t_n, max_min_n, args.iterations)
 
         # print the best score
         print("Best score:")
@@ -140,7 +140,7 @@ if args.nederland == True:
             print(train.past_stations)
 
         # visualize the optimal solution
-        im.pythoncode.visual_solution(Nederland, hillclimber, "Hillclimber solution (Nederland)")
+        im.visual_solution(Nederland, hillclimber, "Hillclimber solution (Nederland)")
 
     # if statement when the argument -greedy is used
     elif args.greedy == True:
@@ -153,11 +153,11 @@ if args.nederland == True:
         for i in range(args.iterations):
 
             # get a new score and route from the algorithm and add to array
-            option = im.pythoncode.greedy(Nederland, max_t_n, max_min_n)
+            option = im.greedy(Nederland, max_t_n, max_min_n)
             new_score = option.score()
             greed.append(new_score)
 
-            # when new score is higher update score
+            # when new score is higher update score and best option
             if new_score > score:
                 score = new_score
                 best_option = option
@@ -172,7 +172,7 @@ if args.nederland == True:
             print(train.past_stations)
 
         # visualize the optimal solution
-        im.pythoncode.visual_solution(Nederland, best_option, "Greedy solution (Nederland)")
+        im.visual_solution(Nederland, best_option, "Greedy solution (Nederland)")
 
     # if statement if the argument -dijkstra is used
     elif args.dijkstra == True:
@@ -185,12 +185,16 @@ if args.nederland == True:
         for i in range(args.iterations):
 
             # get a new score and route from the algorithm an add to array
-            option = im.pythoncode.dijkstra(Nederland, max_t_n, max_min_n)
+            option = im.dijkstra(Nederland, max_t_n, max_min_n)
             new_score = option.score()
             dijks.append(new_score)
+
+            # when new score is higher update score and best option
             if new_score > score:
                 score = new_score
                 best_option = option
+
+        # print best score
         print("Best score:")
         print(score)
 
@@ -199,14 +203,20 @@ if args.nederland == True:
         for train in best_option.trains:
             print(train.past_stations)
 
-        im.pythoncode.visual_solution(Nederland, best_option, "Dijkstra solution (Nederland)")
+        # visualize the optimal solution
+        im.visual_solution(Nederland, best_option, "Dijkstra solution (Nederland)")
 
+# when using the data for the provinces Noord and Zuid Holland
 elif args.noordzuid == True:
+
+    # set the variables of the max trajectories and max minutes
     max_t_nz = 7
     max_min_nz = 120
+
+    # if statement when the argument -hillclimber is used
     if args.hillclimber == True:
-        hillclimber = im.pythoncode.hillclimber(NZ_Holland, im.pythoncode.random_solution,
-            im.pythoncode.random_trajectory, max_t_nz, max_min_nz, args.iterations)
+        hillclimber = im.hillclimber(NZ_Holland, im.random_solution,
+            im.random_trajectory, max_t_nz, max_min_nz, args.iterations)
         print("Best score:")
         print(hillclimber.score())
 
@@ -215,12 +225,12 @@ elif args.noordzuid == True:
         for train in hillclimber.trains:
             print(train.past_stations)
 
-        im.pythoncode.visual_solution(NZ_Holland, hillclimber, "Hillclimber solution (NZ Holland)")
+        im.visual_solution(NZ_Holland, hillclimber, "Hillclimber solution (NZ Holland)")
     elif args.greedy == True:
         score = 0
         greed = []
         for i in range(args.iterations):
-            option = im.pythoncode.greedy(NZ_Holland, max_t_nz, max_min_nz)
+            option = im.greedy(NZ_Holland, max_t_nz, max_min_nz)
             new_score = option.score()
             greed.append(new_score)
             if new_score > score:
@@ -234,12 +244,12 @@ elif args.noordzuid == True:
         for train in best_option.trains:
             print(train.past_stations)
 
-        im.pythoncode.visual_solution(NZ_Holland, best_option, "Greedy solution (NZ Holland)")
+        im.visual_solution(NZ_Holland, best_option, "Greedy solution (NZ Holland)")
     elif args.dijkstra == True:
         score = 0
         dijks = []
         for i in range(args.iterations):
-            option = im.pythoncode.dijkstra(NZ_Holland, max_t_nz, max_min_nz)
+            option = im.dijkstra(NZ_Holland, max_t_nz, max_min_nz)
             new_score = option.score()
             dijks.append(new_score)
             if new_score > score:
@@ -253,4 +263,4 @@ elif args.noordzuid == True:
         for train in best_option.trains:
             print(train.past_stations)
 
-        im.pythoncode.visual_solution(NZ_Holland, best_option, "Dijkstra solution (NZ Holland)")
+        im.visual_solution(NZ_Holland, best_option, "Dijkstra solution (NZ Holland)")

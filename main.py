@@ -127,7 +127,7 @@ if args.nederland == True:
     if args.hillclimber == True:
 
         # calling the function hillclimber with number of iterations
-        hillclimber = im.python.hillclimber(Nederland, im.random_solution,
+        hillclimber = im.hillclimber(Nederland, im.random_solution,
         im.random_trajectory, max_t_n, max_min_n, args.iterations)
 
         # print the best score

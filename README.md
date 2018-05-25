@@ -5,14 +5,16 @@ We searches for the best algorithm to optimize the score function. The score fun
 ## Getting Started
 
 ### Prerequisites
-Deze codebase is volledig geschreven in Python3.6.3. In requirements.txt staan alle benodigde packages om de code succesvol te draaien. Deze zijn gemakkelijk te installeren via pip dmv. de volgende instructie:
+This codebase is completely written in Pyhton3.6.3. Requirements.txt contains all neseccary packages to succesfully run the code. These requirements are easy to install via:
 
 pip install -r requirements.text
 
 ### Structure
-The data is load into the classes in main. The classes are in the folder classes and the used data in the folder data. The different algorithms can be found in the folder algorithms and the code for the visualisations and the images can be found in the folder visualisation.
+We have got the three folders: data, pythoncode and results. The file data contains the data about the stations and connections of NZ Holland and the Netherlands. The file pythoncode contains four folders: algorithms, classes, functions and visualisation. In the folder algorithms we have the algorithms dijksta, greedy, hillclimber and random_solution. In the folder classes we have a folder named classes which contains three classes: Stations, Train, Trains. The folder functions contains a file random_trajectory with a function that contains a function that runs a random trajectory. The folder visualisation has two files: histogram and visual. The file histogram plots a histogram of scores. The file visual contains two functions, visual_solution and visual. These functions visualize the best solution and the possible trajectories. The folder results contains the results of all the random trains and algorithms.
 
 ### Testing
+Run the following command to find out how the programm works:
+python main.py --help
 
 
 ## Authors

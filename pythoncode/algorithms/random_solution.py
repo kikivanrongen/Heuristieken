@@ -6,7 +6,8 @@ def random_solution(data, max_t, max_min, corner = None, returns = None):
     whether to return to the previous station or not. The stations are choosen
     with the builtin function random. In this function the function random_
     trajectory is called to determine one single trajectory. All these trajectories
-    form the whole solution. """
+    form the whole solution.
+    """
 
     # initalize variables
     trains = im.pythoncode.classes.classes.Trains(data)

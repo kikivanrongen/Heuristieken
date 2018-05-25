@@ -14,6 +14,7 @@ from algorithms.greedy import greedy
 from algorithms.dijkstra import dijkstra
 
 from visualisation.visual import visual_sol
+from visualisation.histogram import hist
 
 from functions.random_trajectory_noreturns import random_trajectory_noreturns
 from functions.random_trajectory2 import random_trajectory2

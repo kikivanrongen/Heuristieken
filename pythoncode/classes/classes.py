@@ -118,6 +118,7 @@ class Train():
         self.past_stations = []
         self.past_critical_stations = []
         self.past_critical_connections = []
+        self.past_connections = []
         self.time_elapsed = 0
         self.number_critical = 0
 
@@ -153,6 +154,9 @@ class Train():
                         self.number_critical += 1
                         self.past_critical_stations.append(place)
                         self.past_critical_connections.append((self.location, place))
+
+                    else:
+                        self.past_connections.append((self.location, place))
 
                 # update current location
                 self.location = self.to_location
@@ -222,3 +226,36 @@ class Trains():
         S = p * 10000 - (self.train_count * 20 + minutes / 10)
 
         return S
+
+def score2(self):
+    """
+    Score function with only critical connections
+    """
+
+    # set variables
+    all_past_connections = []
+    minutes = 0
+    total = len(self.stations.past_connections)
+
+    # create list of all past critical stations
+    for element in self.trains:
+        all_past_connections.append(element.past_connections)
+        minutes += element.time_elapsed
+
+    # create one list of all past critical connections
+    one_list = []
+    for train in all_past_connections:
+        for route in train:
+            one_list.append(route)
+
+    # remove duplicates (both (a,b) and (b,a))
+    cleared_set = set(one_list)
+    complete_dict = {tuple(item) for item in map(sorted, cleared_set)}
+
+    # calculate proportion of driven critical connections
+    p = len(complete_dict) / total
+
+    # calculate score
+    S = p * 10000 - (self.train_count * 20 + minutes / 10)
+
+    return S

@@ -1,14 +1,20 @@
 import __init__ as im
 
 def random_solution(data, max_t, max_min, corner = None, returns = None):
+<<<<<<< HEAD
 
+=======
+>>>>>>> 79a492ef0ad6d9d929f165144a32834e28c2cc1b
     """ This function gives a random solution given the data, maximum amount of
     trains, maximum amount of minutes, whether to start in a corner or not and
     whether to return to the previous station or not. The stations are choosen
     with the builtin function random. In this function the function random_
     trajectory is called to determine one single trajectory. All these trajectories
     form the whole solution.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 79a492ef0ad6d9d929f165144a32834e28c2cc1b
     """
 
     # initalize variables

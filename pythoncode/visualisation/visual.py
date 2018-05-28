@@ -1,7 +1,8 @@
 import __init__ as im
 
 def visual_solution(data, solution, title):
-    "Function that visualizes the solution. Every trajectory has another color."
+    """ Function that visualizes the solution. Every trajectory has another color.
+    """
 
     # get stations and coordinates
     stations = data.names
@@ -28,9 +29,10 @@ def visual_solution(data, solution, title):
     im.plt.show()
 
 def visual(data, title):
-    """ Visualisation of the possible trajectories. The critical connections
+    """ Visualisation of all possible trajectories. The critical connections
     and critical stations are marked red. The other stations and connections are
-    marked blue. """
+    marked blue.
+    """
 
     # define variables
     stations = data.names

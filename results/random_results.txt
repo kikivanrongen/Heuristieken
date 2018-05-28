@@ -1,4 +1,4 @@
-The random algorithm has iterated for 1,000,000 times. This resuktes in the
+The random algorithm has iterated for 1,000,000 times. This results in the
 following:
 
 NZ Holland
@@ -11,4 +11,4 @@ Nederland:
 - uithoek, return: 3747
 - uithoek, no return: 5297
 - random, return: 6022
-- random, no return: 6152
+- random no return: 6152
